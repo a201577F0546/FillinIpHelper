@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 namespace shcoolnetchange
 {
-    class Class1
+    class Class3
     {
         [DllImport("kernel32")]
         public static extern bool WritePrivateProfileString(byte[] section, byte[] key, byte[] val, string filePath);
