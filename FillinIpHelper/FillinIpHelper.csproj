@@ -71,11 +71,11 @@
   <ItemGroup>
     <Compile Include="Class3.cs" />
     <Compile Include="Class2.cs" />
-    <Compile Include="iPchange.cs">
+    <Compile Include="IpFill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="iPchange.Designer.cs">
-      <DependentUpon>iPchange.cs</DependentUpon>
+    <Compile Include="IpFill.Designer.cs">
+      <DependentUpon>IpFill.cs</DependentUpon>
     </Compile>
     <Compile Include="OperIni.cs" />
     <Compile Include="Program.cs" />
@@ -83,8 +83,8 @@
     <Compile Include="UserControl_IPv4TextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="iPchange.resx">
-      <DependentUpon>iPchange.cs</DependentUpon>
+    <EmbeddedResource Include="IpFill.resx">
+      <DependentUpon>IpFill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

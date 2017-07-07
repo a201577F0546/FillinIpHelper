@@ -14,9 +14,9 @@ using System.Runtime.InteropServices;//操作INI文件需要引入的命名空�
 using System.IO;//检查配置文件是否存在需要引入的名字空间
 namespace shcoolnetchange
 {
-    public partial class iPchange : Form
+    public partial class IpFill : Form
     {
-        public iPchange()
+        public IpFill()
         {
             InitializeComponent();
         }

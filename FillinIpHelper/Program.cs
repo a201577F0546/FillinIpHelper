@@ -16,7 +16,7 @@ namespace shcoolnetchange
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new iPchange());
+            Application.Run(new IpFill());
         }
     }
 }
