@@ -81,7 +81,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "自动获取IP";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // menuStrip1
             // 
@@ -110,7 +110,7 @@
             this.NewIpconfig,
             this.配置信息重置ToolStripMenuItem});
             this.iP配置信息重置ToolStripMenuItem1.Name = "iP配置信息重置ToolStripMenuItem1";
-            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
             this.iP配置信息重置ToolStripMenuItem1.Text = "IP配置";
             // 
             // NewIpconfig
@@ -133,20 +133,20 @@
             this.AboutIpHelper,
             this.AboutDeveloper});
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // AboutIpHelper
             // 
             this.AboutIpHelper.Name = "AboutIpHelper";
-            this.AboutIpHelper.Size = new System.Drawing.Size(152, 22);
+            this.AboutIpHelper.Size = new System.Drawing.Size(123, 22);
             this.AboutIpHelper.Text = "IP小助手";
             this.AboutIpHelper.Click += new System.EventHandler(this.AboutIpHelper_Click);
             // 
             // AboutDeveloper
             // 
             this.AboutDeveloper.Name = "AboutDeveloper";
-            this.AboutDeveloper.Size = new System.Drawing.Size(152, 22);
+            this.AboutDeveloper.Size = new System.Drawing.Size(123, 22);
             this.AboutDeveloper.Text = "开发者";
             this.AboutDeveloper.Click += new System.EventHandler(this.AboutDeveloper_Click);
             // 
@@ -328,9 +328,11 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "IpFill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IP地址小助手";

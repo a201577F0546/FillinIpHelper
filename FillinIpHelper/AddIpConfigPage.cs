@@ -17,9 +17,28 @@ namespace shcoolnetchange
             InitializeComponent();
         }
 
+        public static string conName="aaa";
+
+        public string ConName { get => conName; set => conName = value; }
+
+       
+
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+
+
+            //将所填写信息
+        }
+
+        private void AddIpConfigPage_Load(object sender, EventArgs e)
+        {
+            label3.Text = this.ConName;
         }
     }
 }

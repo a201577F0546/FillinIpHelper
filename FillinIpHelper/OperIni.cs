@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace shcoolnetchange
 {
     class OperIni
@@ -23,18 +24,25 @@ namespace shcoolnetchange
             GetPrivateProfileString(section, key, defValue, temp, 256,@filepath);
             return temp.ToString();
         }
-
+        
         public static long WriteIni(string section,string key,string value,string filePath)//写入ini文件
         {
+            
             return WritePrivateProfileString(section, key, value, filePath);
         }
         public static long DeleteSection(string section,string filePath)//删除节
         {
+            
             return WritePrivateProfileString(section, null, null, filePath);
         }
         public static long DeleteKey(string section,string key,string value,string filePath)//删除键
         {
             return WritePrivateProfileString(section, key, null, filePath);
+        }
+        public static int GetCount()
+        {
+
+            return 0;
         }
     }
 }
