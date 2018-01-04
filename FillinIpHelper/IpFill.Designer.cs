@@ -31,18 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IpFill));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.iP配置信息重置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iP配置信息重置ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.NewIpconfig = new System.Windows.Forms.ToolStripMenuItem();
             this.配置信息重置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于小助手ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.使用说明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.小助手介绍ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于开发者ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.开发者简介ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.开发者寄语ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutIpHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutDeveloper = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("幼圆", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(9, 344);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
@@ -78,7 +71,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("幼圆", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button2.Location = new System.Drawing.Point(214, 344);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
@@ -96,7 +89,7 @@
             this.iP配置信息重置ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(144, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(52, 25);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,8 +97,6 @@
             // 
             this.iP配置信息重置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iP配置信息重置ToolStripMenuItem1,
-            this.关于小助手ToolStripMenuItem,
-            this.关于开发者ToolStripMenuItem,
             this.关于ToolStripMenuItem});
             this.iP配置信息重置ToolStripMenuItem.Name = "iP配置信息重置ToolStripMenuItem";
             this.iP配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
@@ -123,62 +114,16 @@
             // NewIpconfig
             // 
             this.NewIpconfig.Name = "NewIpconfig";
-            this.NewIpconfig.Size = new System.Drawing.Size(152, 22);
+            this.NewIpconfig.Size = new System.Drawing.Size(148, 22);
             this.NewIpconfig.Text = "新建";
             this.NewIpconfig.Click += new System.EventHandler(this.NewIpconfig_Click);
             // 
             // 配置信息重置ToolStripMenuItem
             // 
             this.配置信息重置ToolStripMenuItem.Name = "配置信息重置ToolStripMenuItem";
-            this.配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.配置信息重置ToolStripMenuItem.Text = "配置信息重置";
             this.配置信息重置ToolStripMenuItem.Click += new System.EventHandler(this.配置信息重置ToolStripMenuItem_Click);
-            // 
-            // 关于小助手ToolStripMenuItem
-            // 
-            this.关于小助手ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.使用说明ToolStripMenuItem,
-            this.小助手介绍ToolStripMenuItem});
-            this.关于小助手ToolStripMenuItem.Name = "关于小助手ToolStripMenuItem";
-            this.关于小助手ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.关于小助手ToolStripMenuItem.Text = "关于小助手";
-            // 
-            // 使用说明ToolStripMenuItem
-            // 
-            this.使用说明ToolStripMenuItem.Name = "使用说明ToolStripMenuItem";
-            this.使用说明ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.使用说明ToolStripMenuItem.Text = "使用说明";
-            this.使用说明ToolStripMenuItem.Click += new System.EventHandler(this.使用说明ToolStripMenuItem_Click);
-            // 
-            // 小助手介绍ToolStripMenuItem
-            // 
-            this.小助手介绍ToolStripMenuItem.Name = "小助手介绍ToolStripMenuItem";
-            this.小助手介绍ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.小助手介绍ToolStripMenuItem.Text = "小助手介绍";
-            this.小助手介绍ToolStripMenuItem.Click += new System.EventHandler(this.小助手介绍ToolStripMenuItem_Click);
-            // 
-            // 关于开发者ToolStripMenuItem
-            // 
-            this.关于开发者ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.开发者简介ToolStripMenuItem,
-            this.开发者寄语ToolStripMenuItem});
-            this.关于开发者ToolStripMenuItem.Name = "关于开发者ToolStripMenuItem";
-            this.关于开发者ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.关于开发者ToolStripMenuItem.Text = "关于开发者";
-            // 
-            // 开发者简介ToolStripMenuItem
-            // 
-            this.开发者简介ToolStripMenuItem.Name = "开发者简介ToolStripMenuItem";
-            this.开发者简介ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.开发者简介ToolStripMenuItem.Text = "开发者简介";
-            this.开发者简介ToolStripMenuItem.Click += new System.EventHandler(this.开发者简介ToolStripMenuItem_Click);
-            // 
-            // 开发者寄语ToolStripMenuItem
-            // 
-            this.开发者寄语ToolStripMenuItem.Name = "开发者寄语ToolStripMenuItem";
-            this.开发者寄语ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.开发者寄语ToolStripMenuItem.Text = "开发者寄语";
-            this.开发者寄语ToolStripMenuItem.Click += new System.EventHandler(this.开发者寄语ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
@@ -192,74 +137,80 @@
             // AboutIpHelper
             // 
             this.AboutIpHelper.Name = "AboutIpHelper";
-            this.AboutIpHelper.Size = new System.Drawing.Size(123, 22);
+            this.AboutIpHelper.Size = new System.Drawing.Size(152, 22);
             this.AboutIpHelper.Text = "IP小助手";
             this.AboutIpHelper.Click += new System.EventHandler(this.AboutIpHelper_Click);
             // 
             // AboutDeveloper
             // 
             this.AboutDeveloper.Name = "AboutDeveloper";
-            this.AboutDeveloper.Size = new System.Drawing.Size(123, 22);
+            this.AboutDeveloper.Size = new System.Drawing.Size(152, 22);
             this.AboutDeveloper.Text = "开发者";
             this.AboutDeveloper.Click += new System.EventHandler(this.AboutDeveloper_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(34, 145);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 12);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "IP 地址：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(34, 179);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "子网掩码：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(34, 214);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "默认网关：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 248);
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(34, 248);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 12);
+            this.label4.Size = new System.Drawing.Size(70, 17);
             this.label4.TabIndex = 9;
-            this.label4.Text = "首选DNS服务器：";
+            this.label4.Text = "首选DNS：";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 282);
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(34, 282);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 12);
+            this.label5.Size = new System.Drawing.Size(70, 17);
             this.label5.TabIndex = 10;
-            this.label5.Text = "备用DNS服务器：";
+            this.label5.Text = "备用DNS：";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.Location = new System.Drawing.Point(34, 111);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
+            this.label6.Size = new System.Drawing.Size(68, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "配置信息：";
             // 
@@ -342,7 +293,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(172, 47);
+            this.label8.Location = new System.Drawing.Point(126, 47);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
@@ -377,6 +328,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "IpFill";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IP地址小助手";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -390,17 +342,10 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem iP配置信息重置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iP配置信息重置ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 关于小助手ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关于开发者ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 配置信息重置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 使用说明ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 小助手介绍ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 开发者简介ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 开发者寄语ToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

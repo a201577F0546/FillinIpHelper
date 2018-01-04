@@ -239,5 +239,10 @@ namespace shcoolnetchange
             addIpConfigPage.Visible = false;
             addIpConfigPage.ShowDialog();
         }
+
+        private void 关于小助手ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
