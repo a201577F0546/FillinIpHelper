@@ -69,8 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class3.cs" />
-    <Compile Include="Class2.cs" />
+    <Compile Include="AddIpConfigPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddIpConfigPage.Designer.cs">
+      <DependentUpon>AddIpConfigPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="IpFill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +87,9 @@
     <Compile Include="UserControl_IPv4TextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="AddIpConfigPage.resx">
+      <DependentUpon>AddIpConfigPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IpFill.resx">
       <DependentUpon>IpFill.cs</DependentUpon>
     </EmbeddedResource>

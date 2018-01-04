@@ -16,10 +16,11 @@ namespace shcoolnetchange
 {
     public partial class IpFill : Form
     {
+        AddIpConfigPage addIpConfigPage;
         public IpFill()
         {
             InitializeComponent();
-
+            addIpConfigPage = new AddIpConfigPage();
 
         }
         private int adapternumber;
@@ -88,15 +89,16 @@ namespace shcoolnetchange
             if (command != null && !command.Equals(""))
             {
                 Process process = new Process();//创建进程对象
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                
-                startInfo.FileName = "cmd.exe";//设定需要执行的命令
-                startInfo.Arguments = "/C"+command;//“/C”表示执行完命令后马上退出
-                startInfo.UseShellExecute = false;//不使用系统外壳程序启动 
-                startInfo.RedirectStandardInput = false;//不重定向输入
-                startInfo.RedirectStandardOutput = true; //重定向输出
-                startInfo.CreateNoWindow = true;//不创建窗口
-                process.StartInfo = startInfo;
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",//设定需要执行的命令
+                    Arguments = "/C" + command,//“/C”表示执行完命令后马上退出
+                    UseShellExecute = false,//不使用系统外壳程序启动 
+                    RedirectStandardInput = false,//不重定向输入
+                    RedirectStandardOutput = true, //重定向输出
+                    CreateNoWindow = true//不创建窗口
+                };
+                process.StartInfo = startInfo;
                 try
                 {
                     if (process.Start())//开始进程
@@ -214,6 +216,28 @@ namespace shcoolnetchange
         private void 开发者寄语ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("完成时间 2016年12月30日01:51:12 ；为了这个小东西我已经用尽洪荒之力，有BUG不要找我，我什么都不知道...什么都不知道~/(ㄒoㄒ)/~~");
+        }
+
+        private void 添加新配置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void AboutIpHelper_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AboutDeveloper_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewIpconfig_Click(object sender, EventArgs e)
+        {
+            addIpConfigPage.Visible = false;
+            addIpConfigPage.ShowDialog();
         }
     }
 }
