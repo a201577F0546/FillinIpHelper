@@ -19,6 +19,8 @@ namespace shcoolnetchange
         public IpFill()
         {
             InitializeComponent();
+
+
         }
         private int adapternumber;
        // private string adaptername;
@@ -60,13 +62,13 @@ namespace shcoolnetchange
             }
 
         }
-        public void fun()
+        public void Fun()
         {
             ipAddressTextBox1.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "IP地址", "", strFilePath);
             ipAddressTextBox2.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "subnet_mask", "", strFilePath).ToString();
             ipAddressTextBox3.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "Defaultgateway", "", strFilePath).ToString();
             ipAddressTextBox4.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "PreferredDNS", "", strFilePath).ToString();
-            ipAddressTextBox5.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "ReserveDNS", "", strFilePath).ToString(); 
+            ipAddressTextBox5.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "ReserveDNS", "", strFilePath).ToString();
         }
         //dosCommand Dos命令语句
         public string Execute(string dosCommand)
@@ -121,7 +123,7 @@ namespace shcoolnetchange
             }
             return output;
         } 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex >= 0)
             {
@@ -159,7 +161,7 @@ namespace shcoolnetchange
         {
             //读取所选择网络连接的配置信息
             //textBox1.Text= OperIni.ReadIni(name[comboBox1.SelectedIndex],"IP地址","",strFilePath).ToString();//读取
-            fun();
+            Fun();
            
         }
 
