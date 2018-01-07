@@ -42,13 +42,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.ipAddressTextBox1 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox2 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox3 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox4 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,26 +195,6 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "*";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.Color.Green;
-            this.label7.Location = new System.Drawing.Point(12, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 22);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "添加IP配置信息";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(228, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "lianjie";
-            // 
             // ipAddressTextBox1
             // 
             this.ipAddressTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -259,6 +239,26 @@
             this.ipAddressTextBox5.Size = new System.Drawing.Size(125, 28);
             this.ipAddressTextBox5.TabIndex = 6;
             this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.ForeColor = System.Drawing.Color.Green;
+            this.label7.Location = new System.Drawing.Point(12, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 22);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "添加IP配置信息";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(228, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "lianjie";
             // 
             // AddIpConfigPage
             // 

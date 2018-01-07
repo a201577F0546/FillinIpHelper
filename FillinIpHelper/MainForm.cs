@@ -245,15 +245,7 @@ namespace IPconfigHelper
 
         }
 
-        private void AboutIpHelper_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("旨在方便在学校，公司中使用静态IP的用户。可以令其免于频繁的手动配置IP等信息！很方便有木有！O(∩_∩)O");
-        }
 
-        private void AboutDeveloper_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("开发者：郑州大学软件学院 软件开发与测试 圆葱 ");
-        }
 
         private void NewIpconfig_Click(object sender, EventArgs e)
         {
@@ -266,7 +258,18 @@ namespace IPconfigHelper
             addIpConfigPage.ShowDialog();
         }
 
-        private void 关于小助手ToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        private void AboutForm_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm
+            {
+                Visible = false
+            };
+            aboutForm.ShowDialog();
+        }
+
+        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

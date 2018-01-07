@@ -37,8 +37,6 @@
             this.NewIpconfig = new System.Windows.Forms.ToolStripMenuItem();
             this.配置信息重置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutIpHelper = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutDeveloper = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,13 +45,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.ipAddressTextBox1 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox2 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox3 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox4 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
+            this.ipAddressTextBox4 = new FVD.Common.IPAddressTextBox();
+            this.ipAddressTextBox3 = new FVD.Common.IPAddressTextBox();
+            this.ipAddressTextBox2 = new FVD.Common.IPAddressTextBox();
+            this.ipAddressTextBox1 = new FVD.Common.IPAddressTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +89,7 @@
             this.iP配置信息重置ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(52, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(144, 25);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -110,7 +108,7 @@
             this.NewIpconfig,
             this.配置信息重置ToolStripMenuItem});
             this.iP配置信息重置ToolStripMenuItem1.Name = "iP配置信息重置ToolStripMenuItem1";
-            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.iP配置信息重置ToolStripMenuItem1.Text = "IP配置";
             // 
             // NewIpconfig
@@ -129,26 +127,10 @@
             // 
             // 关于ToolStripMenuItem
             // 
-            this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutIpHelper,
-            this.AboutDeveloper});
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
-            // 
-            // AboutIpHelper
-            // 
-            this.AboutIpHelper.Name = "AboutIpHelper";
-            this.AboutIpHelper.Size = new System.Drawing.Size(123, 22);
-            this.AboutIpHelper.Text = "IP小助手";
-            this.AboutIpHelper.Click += new System.EventHandler(this.AboutIpHelper_Click);
-            // 
-            // AboutDeveloper
-            // 
-            this.AboutDeveloper.Name = "AboutDeveloper";
-            this.AboutDeveloper.Size = new System.Drawing.Size(123, 22);
-            this.AboutDeveloper.Text = "开发者";
-            this.AboutDeveloper.Click += new System.EventHandler(this.AboutDeveloper_Click);
+            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.AboutForm_Click);
             // 
             // label1
             // 
@@ -238,51 +220,6 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "选择网络连接：";
             // 
-            // ipAddressTextBox1
-            // 
-            this.ipAddressTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox1.Location = new System.Drawing.Point(138, 140);
-            this.ipAddressTextBox1.Name = "ipAddressTextBox1";
-            this.ipAddressTextBox1.Size = new System.Drawing.Size(128, 33);
-            this.ipAddressTextBox1.TabIndex = 21;
-            this.ipAddressTextBox1.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox1.Value")));
-            // 
-            // ipAddressTextBox2
-            // 
-            this.ipAddressTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox2.Location = new System.Drawing.Point(138, 179);
-            this.ipAddressTextBox2.Name = "ipAddressTextBox2";
-            this.ipAddressTextBox2.Size = new System.Drawing.Size(128, 23);
-            this.ipAddressTextBox2.TabIndex = 22;
-            this.ipAddressTextBox2.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox2.Value")));
-            // 
-            // ipAddressTextBox3
-            // 
-            this.ipAddressTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox3.Location = new System.Drawing.Point(138, 214);
-            this.ipAddressTextBox3.Name = "ipAddressTextBox3";
-            this.ipAddressTextBox3.Size = new System.Drawing.Size(128, 23);
-            this.ipAddressTextBox3.TabIndex = 23;
-            this.ipAddressTextBox3.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox3.Value")));
-            // 
-            // ipAddressTextBox4
-            // 
-            this.ipAddressTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox4.Location = new System.Drawing.Point(138, 248);
-            this.ipAddressTextBox4.Name = "ipAddressTextBox4";
-            this.ipAddressTextBox4.Size = new System.Drawing.Size(128, 23);
-            this.ipAddressTextBox4.TabIndex = 24;
-            this.ipAddressTextBox4.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox4.Value")));
-            // 
-            // ipAddressTextBox5
-            // 
-            this.ipAddressTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox5.Location = new System.Drawing.Point(138, 282);
-            this.ipAddressTextBox5.Name = "ipAddressTextBox5";
-            this.ipAddressTextBox5.Size = new System.Drawing.Size(128, 23);
-            this.ipAddressTextBox5.TabIndex = 25;
-            this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
-            // 
             // comboBox2
             // 
             this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -304,7 +241,52 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "所有配置";
             // 
-            // IpFill
+            // ipAddressTextBox5
+            // 
+            this.ipAddressTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ipAddressTextBox5.Location = new System.Drawing.Point(138, 282);
+            this.ipAddressTextBox5.Name = "ipAddressTextBox5";
+            this.ipAddressTextBox5.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox5.TabIndex = 25;
+            this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
+            // 
+            // ipAddressTextBox4
+            // 
+            this.ipAddressTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ipAddressTextBox4.Location = new System.Drawing.Point(138, 248);
+            this.ipAddressTextBox4.Name = "ipAddressTextBox4";
+            this.ipAddressTextBox4.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox4.TabIndex = 24;
+            this.ipAddressTextBox4.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox4.Value")));
+            // 
+            // ipAddressTextBox3
+            // 
+            this.ipAddressTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ipAddressTextBox3.Location = new System.Drawing.Point(138, 214);
+            this.ipAddressTextBox3.Name = "ipAddressTextBox3";
+            this.ipAddressTextBox3.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox3.TabIndex = 23;
+            this.ipAddressTextBox3.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox3.Value")));
+            // 
+            // ipAddressTextBox2
+            // 
+            this.ipAddressTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ipAddressTextBox2.Location = new System.Drawing.Point(138, 179);
+            this.ipAddressTextBox2.Name = "ipAddressTextBox2";
+            this.ipAddressTextBox2.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox2.TabIndex = 22;
+            this.ipAddressTextBox2.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox2.Value")));
+            // 
+            // ipAddressTextBox1
+            // 
+            this.ipAddressTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ipAddressTextBox1.Location = new System.Drawing.Point(138, 140);
+            this.ipAddressTextBox1.Name = "ipAddressTextBox1";
+            this.ipAddressTextBox1.Size = new System.Drawing.Size(128, 33);
+            this.ipAddressTextBox1.TabIndex = 21;
+            this.ipAddressTextBox1.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox1.Value")));
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -333,7 +315,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "IpFill";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IP地址小助手";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -369,8 +351,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripMenuItem NewIpconfig;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AboutIpHelper;
-        private System.Windows.Forms.ToolStripMenuItem AboutDeveloper;
     }
 }
 
