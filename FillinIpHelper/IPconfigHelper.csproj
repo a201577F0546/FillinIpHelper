@@ -7,8 +7,8 @@
     <ProjectGuid>{A3A9471E-F964-4D7C-AAC9-0C234FA0B6F7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>shcoolnetchange</RootNamespace>
-    <AssemblyName>shcoolnetchange</AssemblyName>
+    <RootNamespace>IPconfigHelper</RootNamespace>
+    <AssemblyName>IPconfigHelper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -69,17 +69,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddIpConfigPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddIpConfigPage.Designer.cs">
       <DependentUpon>AddIpConfigPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="IpFill.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IpFill.Designer.cs">
-      <DependentUpon>IpFill.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OperIni.cs" />
     <Compile Include="Program.cs" />
@@ -87,11 +93,14 @@
     <Compile Include="UserControl_IPv4TextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddIpConfigPage.resx">
       <DependentUpon>AddIpConfigPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IpFill.resx">
-      <DependentUpon>IpFill.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControl_IPv4TextBox.resx">
       <DependentUpon>UserControl_IPv4TextBox.cs</DependentUpon>

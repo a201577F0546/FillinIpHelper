@@ -13,12 +13,12 @@ using System.Configuration;
 using System.Runtime.InteropServices;//操作INI文件需要引入的命名空间
 using System.IO;//检查配置文件是否存在需要引入的名字空间
 using System.Threading;
-namespace shcoolnetchange
+namespace IPconfigHelper
 {
-    public partial class IpFill : Form
+    public partial class MainForm : Form
     {
         AddIpConfigPage addIpConfigPage;
-        public IpFill()
+        public MainForm()
         {
             InitializeComponent();
             
@@ -232,15 +232,7 @@ namespace shcoolnetchange
             MessageBox.Show("有点智商的应该都懂把···，tips:支持按空格跳转到下一个输入框哦，但是不能直接复制粘贴IP地址/(ㄒoㄒ)/~~");
         }
 
-        private void 小助手介绍ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("旨在方便在学校，公司中使用静态IP的用户。可以令其免于频繁的手动配置IP等信息！很方便有木有！O(∩_∩)O");
-        }
 
-        private void 开发者简介ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("开发人员：郑州大学软件学院 软件开发与测试 圆葱 ；联系方式：15713660311 没错就我一个(￣▽￣)呵呵");
-        }
 
         private void 开发者寄语ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -255,12 +247,12 @@ namespace shcoolnetchange
 
         private void AboutIpHelper_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("旨在方便在学校，公司中使用静态IP的用户。可以令其免于频繁的手动配置IP等信息！很方便有木有！O(∩_∩)O");
         }
 
         private void AboutDeveloper_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("开发者：郑州大学软件学院 软件开发与测试 圆葱 ");
         }
 
         private void NewIpconfig_Click(object sender, EventArgs e)

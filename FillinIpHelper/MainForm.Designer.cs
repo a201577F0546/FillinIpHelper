@@ -1,6 +1,6 @@
-﻿namespace shcoolnetchange
+﻿namespace IPconfigHelper
 {
-    partial class IpFill
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IpFill));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();

@@ -1,4 +1,4 @@
-﻿namespace shcoolnetchange
+﻿namespace IPconfigHelper
 {
     partial class AddIpConfigPage
     {
