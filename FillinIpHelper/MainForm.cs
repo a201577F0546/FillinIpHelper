@@ -28,7 +28,7 @@ namespace IPconfigHelper
        // private string adaptername;
         private string strFilePath;
         string[] name;//一个字符串数组用来存放所有网络连接的名字
-        string[] configName;
+        //[] configName;
         string[] IPInformation= new string [5]{"IP地址", "subnet_mask", "Defaultgateway","PreferredDNS", "ReserveDNS" };
         string[] IPnum = new string[5];
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();//获取本地计算机上网络接口的对象
@@ -169,7 +169,7 @@ namespace IPconfigHelper
                 button1.Enabled = true;
             }
             else
-                MessageBox.Show("先别乱点，选择一个网络连接先");
+                button1.Enabled = false;
             
            
        
