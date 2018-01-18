@@ -47,37 +47,43 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ConfigLockButton = new System.Windows.Forms.Button();
             this.ipAddressTextBox4 = new FVD.Common.IPAddressTextBox();
+            this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox3 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox2 = new FVD.Common.IPAddressTextBox();
             this.ipAddressTextBox1 = new FVD.Common.IPAddressTextBox();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(9, 344);
+            this.button1.Location = new System.Drawing.Point(29, 344);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 46);
             this.button1.TabIndex = 0;
-            this.button1.Text = "手动设置IP";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "更改";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(214, 344);
+            this.button2.Location = new System.Drawing.Point(192, 344);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 46);
             this.button2.TabIndex = 1;
-            this.button2.Text = "自动获取IP";
+            this.button2.Text = "自动";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -89,7 +95,7 @@
             this.iP配置信息重置ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(144, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(52, 25);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -108,7 +114,7 @@
             this.NewIpconfig,
             this.配置信息重置ToolStripMenuItem});
             this.iP配置信息重置ToolStripMenuItem1.Name = "iP配置信息重置ToolStripMenuItem1";
-            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
             this.iP配置信息重置ToolStripMenuItem1.Text = "IP配置";
             // 
             // NewIpconfig
@@ -128,7 +134,7 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.AboutForm_Click);
             // 
@@ -136,7 +142,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(34, 145);
+            this.label1.Location = new System.Drawing.Point(8, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 17);
@@ -147,7 +153,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(34, 179);
+            this.label2.Location = new System.Drawing.Point(8, 85);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
@@ -158,7 +164,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(34, 214);
+            this.label3.Location = new System.Drawing.Point(8, 120);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
@@ -169,7 +175,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(34, 248);
+            this.label4.Location = new System.Drawing.Point(8, 154);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 17);
@@ -180,7 +186,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(34, 282);
+            this.label5.Location = new System.Drawing.Point(8, 188);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 17);
@@ -191,17 +197,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(34, 111);
+            this.label6.Location = new System.Drawing.Point(8, 17);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.Size = new System.Drawing.Size(0, 17);
             this.label6.TabIndex = 12;
-            this.label6.Text = "配置信息：";
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(31, 61);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -224,8 +231,9 @@
             // 
             this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(128, 61);
+            this.comboBox2.Location = new System.Drawing.Point(143, 61);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(138, 20);
@@ -234,55 +242,93 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(126, 47);
+            this.label8.Location = new System.Drawing.Point(141, 47);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 27;
             this.label8.Text = "所有配置";
             // 
-            // ipAddressTextBox5
+            // groupBox1
             // 
-            this.ipAddressTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox5.Location = new System.Drawing.Point(138, 282);
-            this.ipAddressTextBox5.Name = "ipAddressTextBox5";
-            this.ipAddressTextBox5.Size = new System.Drawing.Size(128, 23);
-            this.ipAddressTextBox5.TabIndex = 25;
-            this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
+            this.groupBox1.Controls.Add(this.ConfigLockButton);
+            this.groupBox1.Controls.Add(this.ipAddressTextBox4);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.ipAddressTextBox5);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.ipAddressTextBox3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.ipAddressTextBox2);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.ipAddressTextBox1);
+            this.groupBox1.Location = new System.Drawing.Point(31, 86);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(250, 236);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "配置信息";
+            // 
+            // ConfigLockButton
+            // 
+            this.ConfigLockButton.BackColor = System.Drawing.SystemColors.Control;
+            this.ConfigLockButton.BackgroundImage = global::IPconfigHelper.Properties.Resources.locked56;
+            this.ConfigLockButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConfigLockButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConfigLockButton.FlatAppearance.BorderSize = 0;
+            this.ConfigLockButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ConfigLockButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.ConfigLockButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConfigLockButton.Location = new System.Drawing.Point(220, 15);
+            this.ConfigLockButton.Name = "ConfigLockButton";
+            this.ConfigLockButton.Size = new System.Drawing.Size(15, 15);
+            this.ConfigLockButton.TabIndex = 26;
+            this.ConfigLockButton.UseVisualStyleBackColor = false;
+            this.ConfigLockButton.Click += new System.EventHandler(this.ConfigLockButton_Click);
             // 
             // ipAddressTextBox4
             // 
             this.ipAddressTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox4.Location = new System.Drawing.Point(138, 248);
+            this.ipAddressTextBox4.Location = new System.Drawing.Point(112, 159);
             this.ipAddressTextBox4.Name = "ipAddressTextBox4";
-            this.ipAddressTextBox4.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox4.Size = new System.Drawing.Size(129, 23);
             this.ipAddressTextBox4.TabIndex = 24;
             this.ipAddressTextBox4.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox4.Value")));
+            // 
+            // ipAddressTextBox5
+            // 
+            this.ipAddressTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ipAddressTextBox5.Location = new System.Drawing.Point(112, 193);
+            this.ipAddressTextBox5.Name = "ipAddressTextBox5";
+            this.ipAddressTextBox5.Size = new System.Drawing.Size(129, 23);
+            this.ipAddressTextBox5.TabIndex = 25;
+            this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
             // 
             // ipAddressTextBox3
             // 
             this.ipAddressTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox3.Location = new System.Drawing.Point(138, 214);
+            this.ipAddressTextBox3.Location = new System.Drawing.Point(112, 125);
             this.ipAddressTextBox3.Name = "ipAddressTextBox3";
-            this.ipAddressTextBox3.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox3.Size = new System.Drawing.Size(129, 23);
             this.ipAddressTextBox3.TabIndex = 23;
             this.ipAddressTextBox3.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox3.Value")));
             // 
             // ipAddressTextBox2
             // 
             this.ipAddressTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox2.Location = new System.Drawing.Point(138, 179);
+            this.ipAddressTextBox2.Location = new System.Drawing.Point(112, 90);
             this.ipAddressTextBox2.Name = "ipAddressTextBox2";
-            this.ipAddressTextBox2.Size = new System.Drawing.Size(128, 23);
+            this.ipAddressTextBox2.Size = new System.Drawing.Size(129, 23);
             this.ipAddressTextBox2.TabIndex = 22;
             this.ipAddressTextBox2.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox2.Value")));
             // 
             // ipAddressTextBox1
             // 
             this.ipAddressTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox1.Location = new System.Drawing.Point(138, 140);
+            this.ipAddressTextBox1.Location = new System.Drawing.Point(112, 51);
             this.ipAddressTextBox1.Name = "ipAddressTextBox1";
-            this.ipAddressTextBox1.Size = new System.Drawing.Size(128, 33);
+            this.ipAddressTextBox1.Size = new System.Drawing.Size(129, 33);
             this.ipAddressTextBox1.TabIndex = 21;
             this.ipAddressTextBox1.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox1.Value")));
             // 
@@ -292,21 +338,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(314, 401);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.ipAddressTextBox5);
-            this.Controls.Add(this.ipAddressTextBox4);
-            this.Controls.Add(this.ipAddressTextBox3);
-            this.Controls.Add(this.ipAddressTextBox2);
-            this.Controls.Add(this.ipAddressTextBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
@@ -319,8 +355,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IP地址小助手";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Click += new System.EventHandler(this.MainForm_Click);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,6 +390,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripMenuItem NewIpconfig;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button ConfigLockButton;
     }
 }
 

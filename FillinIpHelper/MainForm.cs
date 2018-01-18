@@ -28,7 +28,7 @@ namespace IPconfigHelper
        // private string adaptername;
         private string strFilePath;
         string[] name;//一个字符串数组用来存放所有网络连接的名字
-        //[] configName;
+        string[] configName;//存放自定义的连接备注
         string[] IPInformation= new string [5]{"IP地址", "subnet_mask", "Defaultgateway","PreferredDNS", "ReserveDNS" };
         string[] IPnum = new string[5];
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();//获取本地计算机上网络接口的对象
@@ -38,17 +38,6 @@ namespace IPconfigHelper
         private void Form1_Load(object sender, EventArgs e)
         {
     
-            adapternumber = adapters.Length;//作为数组的长度
-            name = new string[adapternumber];
-            
-            for (int i = 0; i < adapternumber - 3; i++)//之所以减去3是因为有三个不明功能的网络连接。
-            {
-                name[i] =adapters[i].Name;//将适配器名字赋予name数组
-            }
-            comboBox1.DataSource = name;//将name绑定到comboBox1
-
-
-
             //判断配置文件是否存在
             this.strFilePath = Application.StartupPath + @"\IPconfig.ini";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
             if (File.Exists(@"IPconfig.ini")==false)//如果不存在那么初始化
@@ -68,12 +57,23 @@ namespace IPconfigHelper
             }
             else
             {
+
+                adapternumber = adapters.Length;//作为数组的长度
+                name = new string[adapternumber];
+
+                for (int i = 0; i < adapternumber - 3; i++)//之所以减去3是因为有三个不明功能的网络连接。
+                {
+                    name[i] = adapters[i].Name;//将适配器名字赋予name数组
+                }
+                comboBox1.DataSource = name;//将name绑定到comboBox1
+
+
+
+
                 //如果配置文件存在 进行默认选择
                 comboBox1.SelectedIndex = 0;
 
                 //读取节点数
-
-            
 
 
             }
@@ -272,6 +272,36 @@ namespace IPconfigHelper
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ConfigLockButton_Click(object sender, EventArgs e)
+        {
+            if (ipAddressTextBox1.Enabled == true)
+            {
+                ConfigLockButton.BackgroundImage = Properties.Resources.locked56;
+                ipAddressTextBox1.Enabled = false;
+                ipAddressTextBox2.Enabled = false;
+                ipAddressTextBox3.Enabled = false;
+                ipAddressTextBox4.Enabled = false;
+                ipAddressTextBox5.Enabled = false;
+               
+            }
+            else
+            {
+                ConfigLockButton.BackgroundImage = Properties.Resources.unlock37;
+                ipAddressTextBox1.Enabled = true;
+                ipAddressTextBox2.Enabled = true;
+                ipAddressTextBox3.Enabled = true;
+                ipAddressTextBox4.Enabled = true;
+                ipAddressTextBox5.Enabled = true;
+            }
+
+
+        }
+
+        private void MainForm_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
