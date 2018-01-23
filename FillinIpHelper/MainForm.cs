@@ -18,32 +18,39 @@ namespace IPconfigHelper
     public partial class MainForm : Form
     {
         AddIpConfigPage addIpConfigPage;
-        public MainForm()
-        {
-            InitializeComponent();
-            
-
-        }
         private int adapternumber;
-       // private string adaptername;
+        // private string adaptername;
         private string strFilePath;
         string[] name;//一个字符串数组用来存放所有网络连接的名字
         string[] configName;//存放自定义的连接备注
-        string[] IPInformation= new string [5]{"IP地址", "subnet_mask", "Defaultgateway","PreferredDNS", "ReserveDNS" };
+        string[] IPInformation = new string[5] { "IP地址", "subnet_mask", "Defaultgateway", "PreferredDNS", "ReserveDNS" };
         string[] IPnum = new string[5];
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();//获取本地计算机上网络接口的对象
 
- 
+
+        public MainForm()
+        {
+            InitializeComponent();
+            adapternumber = adapters.Length;//作为数组的长度
+            name = new string[adapternumber];
+            for (int i = 0; i < adapternumber - 3; i++)//之所以减去3是因为有三个不明功能的网络连接。
+            {
+                name[i] = adapters[i].Name;//将适配器名字赋予name数组
+            }
+            comboBox1.DataSource = name;//将name绑定到comboBox1
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-    
+
             //判断配置文件是否存在
             this.strFilePath = Application.StartupPath + @"\IPconfig.ini";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
             if (File.Exists(@"IPconfig.ini")==false)//如果不存在那么初始化
             {
+
                 //定义一个ini文件路径 
-                MessageBox.Show("首次运行！IP配置文件（IPconfig.ini）已创建并且初始化，勿删！");
+                MessageBox.Show("IPconfig.ini(IP配置文件)已创建并且初始化，勿删！");
 
                 OperIni.WriteIni("CountNum","count","1", strFilePath);//初始化  计数结点
 
@@ -53,6 +60,10 @@ namespace IPconfigHelper
                     OperIni.WriteIni(name[i]+"&默认", IPInformation[j], "0.0.0.0", strFilePath);//初始化配置文件
                 }
 
+                comboBox2.Items.Add("默认");
+
+      
+
                 comboBox1.SelectedIndex = 0;
             }
             else
@@ -60,17 +71,7 @@ namespace IPconfigHelper
 
                 adapternumber = adapters.Length;//作为数组的长度
                 name = new string[adapternumber];
-
-                for (int i = 0; i < adapternumber - 3; i++)//之所以减去3是因为有三个不明功能的网络连接。
-                {
-                    name[i] = adapters[i].Name;//将适配器名字赋予name数组
-                }
-                comboBox1.DataSource = name;//将name绑定到comboBox1
-
-
-
-
-                //如果配置文件存在 进行默认选择
+               //如果配置文件存在 进行默认选择
                 comboBox1.SelectedIndex = 0;
 
                 //读取节点数
@@ -302,6 +303,17 @@ namespace IPconfigHelper
         private void MainForm_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //删除配置文件
+            FileInfo file = new FileInfo(Application.StartupPath + "\\IPconfig.ini");
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
         }
     }
 }
