@@ -45,7 +45,7 @@ namespace IPconfigHelper
         {
 
             //判断配置文件是否存在
-            this.strFilePath = Application.StartupPath + @"\IPconfig.ini";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
+            this.strFilePath = Application.StartupPath + @"\gui-config.json";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
             if (File.Exists(@"IPconfig.ini")==false)//如果不存在那么初始化
             {
 
