@@ -205,7 +205,7 @@
             this.AdapterComboBox.Name = "AdapterComboBox";
             this.AdapterComboBox.Size = new System.Drawing.Size(93, 20);
             this.AdapterComboBox.TabIndex = 13;
-            this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+
             this.AdapterComboBox.MouseLeave += new System.EventHandler(this.AdapterComboBox_MouseLeave);
             this.AdapterComboBox.MouseHover += new System.EventHandler(this.AdapterComboBox_MouseHover);
             // 
@@ -267,7 +267,6 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "配置信息";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // NameTextBox
             // 
@@ -407,7 +406,6 @@
             this.Text = "IP地址小助手";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Click += new System.EventHandler(this.MainForm_Click);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
