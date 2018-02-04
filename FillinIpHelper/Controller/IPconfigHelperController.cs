@@ -34,6 +34,15 @@ namespace IPconfigHelper.Controller
 
 
         }
+
+        public void DeleteInternetSetting(List<InternetSetting> internetSettings,InternetSetting internetSetting)
+        {
+            _config.configs = internetSettings;
+            _config.configs.Remove(internetSetting);
+            Configuration.Save(_config);
+        }
+
+
         protected void Reload()//配置保存之后需要重新读取
            
         {

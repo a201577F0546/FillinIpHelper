@@ -22,11 +22,7 @@ namespace IPconfigHelper
         AddIpConfigPage addIpConfigPage;
         IPconfigHelperController Controller;
         private int adapternumber;
-        // private string adaptername;
-        private string strFilePath;
         string[] name;//一个字符串数组用来存放所有网络连接的名字
-        string[] configName;//存放自定义的连接备注
-        string[] IPInformation = new string[5] { "IP地址", "subnet_mask", "Defaultgateway", "PreferredDNS", "ReserveDNS" };
         string[] IPnum = new string[5];
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();//获取本地计算机上网络接口的对象
         private Configuration _modifiedConfiguration;//暂存更改后的配置
@@ -45,73 +41,27 @@ namespace IPconfigHelper
 
             Controller = new IPconfigHelperController();
 
-
-
         }
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            ////判断配置文件是否存在
-            //this.strFilePath = Application.StartupPath + @"\gui-config.json";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
-            //if (File.Exists(@"IPconfig.ini")==false)//如果不存在那么初始化
-            //{
-
-            //    //定义一个ini文件路径 
-            //    //MessageBox.Show("IPconfig.ini(IP配置文件)已创建并且初始化，勿删！");
-
-            //   // OperIni.WriteIni("CountNum","count","1", strFilePath);//初始化  计数结点
-
-            //    for (int i = 0; i < adapternumber - 3; i++)
-            //    {
-            //        for(int j=0;j<5;j++)
-            //        OperIni.WriteIni(name[i]+"&默认", IPInformation[j], "0.0.0.0", strFilePath);//初始化配置文件
-            //    }
-
-            //    InternetSettingComboBox.Items.Add("默认");
-
-
-
-            //    comboBox1.SelectedIndex = 0;
-            //}
-            //else
-            //{
-
-            //    adapternumber = adapters.Length;//作为数组的长度
-            //    name = new string[adapternumber];
-            //   //如果配置文件存在 进行默认选择
-            //    comboBox1.SelectedIndex = 0;
-
-            //    //读取节点数
-
-
-            //}
             AdapterComboBox.SelectedIndex = 0;
-
             LoadCurrentConfiguration();//加载当前配置
-           for(int i=0; i< _modifiedConfiguration.configs.Count; i++)
+            InternetSettingComboBox.Items.Clear();
+            for (int i=0; i< _modifiedConfiguration.configs.Count; i++)
             {
-                InternetSettingComboBox.Items.Add("默认");
+                InternetSettingComboBox.Items.Add(_modifiedConfiguration.configs[i].name);
             }
-
             InternetSettingComboBox.SelectedIndex = 0;
             LoadSelectedInternetSetting();
             EditorUnable();
 
         }
-        public void Fun()//将选择的项输出到IPAddressTextBox
-        {
-            IPTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "IP地址", "", strFilePath);
-            SubnetMaskTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "subnet_mask", "", strFilePath).ToString();
-            DefaultGatewayTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "Defaultgateway", "", strFilePath).ToString();
-            PreferredDNSTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "PreferredDNS", "", strFilePath).ToString();
-            AlternateDNSTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "ReserveDNS", "", strFilePath).ToString();
-        }
         //dosCommand Dos命令语句
         public Task<string> Execute(string dosCommand)
         {
-            return Execute(dosCommand, 10);
+            return Execute(dosCommand, 1000);
         }
         /// <summary>
         /// 执行DOS命令，返回DOS命令的输出
@@ -174,7 +124,8 @@ namespace IPconfigHelper
         {
             if (AdapterComboBox.SelectedIndex >= 0)
             {
-
+                string a = IPTextBox.Text;
+                string b = name[AdapterComboBox.SelectedIndex];
                 //MessageBox.Show("IP信息写入完成");
                 Execute("netsh interface ip set address \"" + name[AdapterComboBox.SelectedIndex] + "\" static" + " " + IPTextBox.Text + " " + SubnetMaskTextBox.Text + " " + DefaultGatewayTextBox.Text);
                 Execute("netsh interface ip set dns \"" + name[AdapterComboBox.SelectedIndex] + "\" static" + " " + PreferredDNSTextBox.Text);
@@ -185,25 +136,21 @@ namespace IPconfigHelper
             }
             else
                 OKButton.Enabled = false;
-            
-           
-       
         }
-
-        private void Button2_Click(object sender, EventArgs e)//ini文件操作成功
+        private void Button2_Click(object sender, EventArgs e)
         {
             if (AdapterComboBox.SelectedIndex >= 0)
             {
-                Execute("netsh interface ip set address \"" + name[AdapterComboBox.SelectedIndex] + "\" source=dhcp");
-            Execute("netsh interface ip set dns \"" + name[AdapterComboBox.SelectedIndex] + "\" source=dhcp");
-            MessageBox.Show("IP地址以及DNS获取方式：DHCP");
 
+                Execute("netsh interface ip set address \"" + name[AdapterComboBox.SelectedIndex] + "\" source=dhcp");
+                Execute("netsh interface ip set dns \"" + name[AdapterComboBox.SelectedIndex] + "\" source=dhcp");
+                MessageBox.Show("IP地址以及DNS获取方式：DHCP");
             }
             else
                 MessageBox.Show("先别乱点，选择一个网络连接先");
         }
      
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)//适配器列表
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)//适配器列表
         {
             //读取所选择网络连接的配置信息
             //textBox1.Text= OperIni.ReadIni(name[comboBox1.SelectedIndex],"IP地址","",strFilePath).ToString();//读取
@@ -211,44 +158,17 @@ namespace IPconfigHelper
            
         }
 
-        private void 配置信息重置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //消息框中需要显示哪些按钮，此处显示“确定”和“取消”
-            MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
-            //"确定要退出吗？"是对话框的显示信息，"退出系统"是对话框的标题
-            //默认情况下，如MessageBox.Show("确定要退出吗？")只显示一个“确定”按钮。
-            DialogResult dr = MessageBox.Show("确定要重置么?", "配置信息重置", messButton);
-            if (dr == DialogResult.OK)//如果点击“确定”按钮
-            {
-                for (int i = 0; i < adapternumber - 3; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                        OperIni.WriteIni(name[i], IPInformation[j], "0.0.0.0", strFilePath);//初始化配置文件
-                }
-                MessageBox.Show("配置信息已经重置，请重新填写~");
-            }
-            else//如果点击“取消”按钮
-            {
-                MessageBox.Show("取消重置");
-            }
-            
-        
-    }
-
-
         private void NewIpconfig_Click(object sender, EventArgs e)
         {
             addIpConfigPage = new AddIpConfigPage
             {
-
-
             Visible = false
             };
             addIpConfigPage.ShowDialog();
+
+
+            OnLoad(null);
         }
-
-
-
         private void AboutForm_Click(object sender, EventArgs e)
         {
             AboutForm aboutForm = new AboutForm
@@ -271,11 +191,14 @@ namespace IPconfigHelper
                 EditorEnable();
 
             }
-            else
+            else//保存配置
             {
+              
                 ConfigLockButton.BackgroundImage = Properties.Resources.locked56;//切换为锁定图标
                 SaveOldSelectedInternetSetting();
-
+                int a = InternetSettingComboBox.SelectedIndex;
+                OnLoad(null);
+                InternetSettingComboBox.SelectedIndex = a;//这样可以确保窗体重载以后选择的是正在编辑的这个配置
                 OKButton.Enabled = true;
                 DHCPButton.Enabled = true;
                 EditorUnable();
@@ -308,7 +231,7 @@ namespace IPconfigHelper
         private void LoadSelectedInternetSetting()
         {
             InternetSetting internetSetting = _modifiedConfiguration.configs[InternetSettingComboBox.SelectedIndex];
-
+            NameTextBox.Text = internetSetting.name;
             IPTextBox.Text = internetSetting.ipAddress;
             SubnetMaskTextBox.Text = internetSetting.subnetMask;
             DefaultGatewayTextBox.Text = internetSetting.defaultGateway;
@@ -321,16 +244,50 @@ namespace IPconfigHelper
         {
             LoadSelectedInternetSetting();
             _lastSelectedIndex = InternetSettingComboBox.SelectedIndex;
+
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            //删除之后 首先文件在文件里移除此项
+            //然后从下拉列表里移除此项
+            //问题是，下拉列表的顺序必然与文件里的顺序一致么？
+            //是否需要重载窗体
+            //我觉得重载窗体比较保险
+            //消息框中需要显示哪些按钮，此处显示“确定”和“取消”
+            MessageBoxButtons messButton = MessageBoxButtons.YesNo;
+            //"确定要退出吗？"是对话框的显示信息，"退出系统"是对话框的标题
+            //默认情况下，如MessageBox.Show("确定要退出吗？")只显示一个“确定”按钮。
+            DialogResult dr = MessageBox.Show("确定删除？", "配置信息删除", messButton);
+            if (dr == DialogResult.Yes)//如果点击“确定”按钮
+            {
+                int index = InternetSettingComboBox.SelectedIndex;
+                int count = InternetSettingComboBox.Items.Count;
+                LoadCurrentConfiguration();
+                Controller.DeleteInternetSetting(_modifiedConfiguration.configs, _modifiedConfiguration.configs[index]);
+                InternetSettingComboBox.Items.Remove(index);
+                count--;
+                index = count - 1;
+                OnLoad(null);
 
+
+                if (count == 0)
+                {
+                    MessageBox.Show("已恢复默认");
+                }
+                else
+                {
+                    InternetSettingComboBox.SelectedIndex = index;
+                }
+
+            }
         }
+
+        #region 提示信息
 
         private void DeleteButton_MouseHover(object sender, EventArgs e)
         {
-            NoteLableText( "删除配置");
+            NoteLableText("删除配置");
         }
 
         private void DeleteButton_MouseLeave(object sender, EventArgs e)
@@ -345,7 +302,7 @@ namespace IPconfigHelper
                 NoteLableText("保存更改");
             else
                 NoteLableText("编辑配置");
- 
+
         }
 
         private void ConfigLockButton_MouseLeave(object sender, EventArgs e)
@@ -355,19 +312,13 @@ namespace IPconfigHelper
 
         private void OKButton_MouseHover(object sender, EventArgs e)
         {
-            NoteLableText( "执行选定配置（使用静态IP）");
+            NoteLableText("更改所选择的网络适配器IP配置");
         }
 
         private void OKButton_MouseLeave(object sender, EventArgs e)
         {
             NoteLableText("");
         }
-
-        private void NoteLableText(string text)
-        {
-            NoteLabel.Text = text;
-        }
-
         private void DHCPButton_MouseHover(object sender, EventArgs e)
         {
             NoteLableText("切换到DHCP模式（自动获取IP）");
@@ -378,28 +329,44 @@ namespace IPconfigHelper
             NoteLableText("");
         }
 
+        #endregion
+
+
+        private void NoteLableText(string text)
+        {
+            NoteLabel.Text = text;
+        }
+
+
         private void EditorEnable()
         {
+            NameTextBox.Enabled = true;
             IPTextBox.Enabled = true;
             SubnetMaskTextBox.Enabled = true;
             DefaultGatewayTextBox.Enabled = true;
             PreferredDNSTextBox.Enabled = true;
             AlternateDNSTextBox.Enabled = true;
+
+            InternetSettingComboBox.Enabled = false;
         }
 
         private void EditorUnable()
         {
+            NameTextBox.Enabled = false;
             IPTextBox.Enabled = false;
             SubnetMaskTextBox.Enabled = false;
             DefaultGatewayTextBox.Enabled = false;
             PreferredDNSTextBox.Enabled = false;
             AlternateDNSTextBox.Enabled = false;
+            InternetSettingComboBox.Enabled = true;
+
         }
 
         private void SaveOldSelectedInternetSetting()
         {
             InternetSetting internetSetting = new InternetSetting
             {
+                name = NameTextBox.Text,
                 ipAddress = IPTextBox.Text,
                 subnetMask = SubnetMaskTextBox.Text,
                 defaultGateway = DefaultGatewayTextBox.Text,
@@ -423,6 +390,63 @@ namespace IPconfigHelper
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void ClearConfig_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons messButton = MessageBoxButtons.YesNo;
+            //"确定要退出吗？"是对话框的显示信息，"退出系统"是对话框的标题
+            //默认情况下，如MessageBox.Show("确定要退出吗？")只显示一个“确定”按钮。
+            DialogResult dr = MessageBox.Show("确定清空？", "清空所有配置", messButton);
+            if (dr == DialogResult.Yes)//如果点击“确定”按钮
+            {
+                int index = InternetSettingComboBox.SelectedIndex;
+                int count = InternetSettingComboBox.Items.Count;
+                LoadCurrentConfiguration();
+                Controller.DeleteInternetSetting(_modifiedConfiguration.configs, _modifiedConfiguration.configs[index]);
+                InternetSettingComboBox.Items.Remove(index);
+                count--;
+                index = count - 1;
+                OnLoad(null);
+
+
+                if (count == 0)
+                {
+                    MessageBox.Show("恢复默认");
+                }
+                else
+                {
+                    InternetSettingComboBox.SelectedIndex = index;
+                }
+
+            }
+        }
+
+        private void InternetSettingComboBox_MouseHover(object sender, EventArgs e)
+        {
+            NoteLableText("用户配置列表");
+        }
+
+        private void InternetSettingComboBox_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
+        }
+
+        private void NameTextBox_MouseHover(object sender, EventArgs e)
+        {
+            NoteLableText("为不同的配置起不同的备注名以便于区分");
+        }
+
+        private void NameTextBox_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
         }
     }
 }

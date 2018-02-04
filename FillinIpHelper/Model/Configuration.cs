@@ -44,10 +44,10 @@ namespace IPconfigHelper.Model
               
                 return config;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                
-                return new Configuration
+
+                Configuration config = new Configuration
                 {
                     index = 0,
                     isDefault = true,
@@ -57,6 +57,18 @@ namespace IPconfigHelper.Model
                     },
 
                 };
+
+                using (StreamWriter sw = new StreamWriter(File.Open(CONFIG_FILE, FileMode.Create)))
+                {
+                    string jsonString = JsonConvert.SerializeObject(config, Formatting.Indented);
+                    sw.Write(jsonString);
+                    sw.Flush();
+                }
+
+
+
+                return config;
+                
             }
         }
 
@@ -77,7 +89,7 @@ namespace IPconfigHelper.Model
                     sw.Flush();
                 }
             }
-            catch (IOException e)
+            catch (IOException )
             {
                                                                      
             }

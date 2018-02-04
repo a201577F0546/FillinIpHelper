@@ -24,7 +24,17 @@ namespace IPconfigHelper
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            AddNewInternetSetting();
+
+            if (textBox1.Text != "")
+            {
+                AddNewInternetSetting();
+                MessageBox.Show("添加成功");
+                textBox1.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("请填写备注名");
+            }
         }
 
         private void AddIpConfigPage_Load(object sender, EventArgs e)
@@ -36,6 +46,7 @@ namespace IPconfigHelper
         {
             InternetSetting internetSetting = new InternetSetting
             {
+                name = textBox1.Text,
                 ipAddress = IPTextBox.Text,
                 subnetMask = SubnetMaskTextBox.Text,
                 defaultGateway = DefaultGatewayTextBox.Text,
