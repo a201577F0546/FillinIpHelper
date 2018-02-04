@@ -31,67 +31,82 @@ namespace IPconfigHelper
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();//获取本地计算机上网络接口的对象
         private Configuration _modifiedConfiguration;//暂存更改后的配置
         private int _lastSelectedIndex = -1;
+        private bool configUpdateFlag = false;//未更改
         public MainForm()
         {
             InitializeComponent();
             adapternumber = adapters.Length;//作为数组的长度
             name = new string[adapternumber];
-            for (int i = 0; i < adapternumber - 3; i++)//之所以减去3是因为有三个不明功能的网络连接。
+            for (int i = 0; i < adapternumber; i++)//之所以减去3是因为有三个不明功能的网络连接。
             {
                 name[i] = adapters[i].Name;//将适配器名字赋予name数组
             }
-            comboBox1.DataSource = name;//将name绑定到comboBox1
+            AdapterComboBox.DataSource = name;//将name绑定到comboBox1
 
             Controller = new IPconfigHelperController();
+
+
+
         }
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            //判断配置文件是否存在
-            this.strFilePath = Application.StartupPath + @"\gui-config.json";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
-            if (File.Exists(@"IPconfig.ini")==false)//如果不存在那么初始化
+            ////判断配置文件是否存在
+            //this.strFilePath = Application.StartupPath + @"\gui-config.json";//我把这行代码放到了if语句里面，导致如果IPconfig文件存在，那么路径就为空置
+            //if (File.Exists(@"IPconfig.ini")==false)//如果不存在那么初始化
+            //{
+
+            //    //定义一个ini文件路径 
+            //    //MessageBox.Show("IPconfig.ini(IP配置文件)已创建并且初始化，勿删！");
+
+            //   // OperIni.WriteIni("CountNum","count","1", strFilePath);//初始化  计数结点
+
+            //    for (int i = 0; i < adapternumber - 3; i++)
+            //    {
+            //        for(int j=0;j<5;j++)
+            //        OperIni.WriteIni(name[i]+"&默认", IPInformation[j], "0.0.0.0", strFilePath);//初始化配置文件
+            //    }
+
+            //    InternetSettingComboBox.Items.Add("默认");
+
+
+
+            //    comboBox1.SelectedIndex = 0;
+            //}
+            //else
+            //{
+
+            //    adapternumber = adapters.Length;//作为数组的长度
+            //    name = new string[adapternumber];
+            //   //如果配置文件存在 进行默认选择
+            //    comboBox1.SelectedIndex = 0;
+
+            //    //读取节点数
+
+
+            //}
+            AdapterComboBox.SelectedIndex = 0;
+
+            LoadCurrentConfiguration();//加载当前配置
+           for(int i=0; i< _modifiedConfiguration.configs.Count; i++)
             {
-
-                //定义一个ini文件路径 
-                MessageBox.Show("IPconfig.ini(IP配置文件)已创建并且初始化，勿删！");
-
-                OperIni.WriteIni("CountNum","count","1", strFilePath);//初始化  计数结点
-
-                for (int i = 0; i < adapternumber - 3; i++)
-                {
-                    for(int j=0;j<5;j++)
-                    OperIni.WriteIni(name[i]+"&默认", IPInformation[j], "0.0.0.0", strFilePath);//初始化配置文件
-                }
-
                 InternetSettingComboBox.Items.Add("默认");
-
-      
-
-                comboBox1.SelectedIndex = 0;
             }
-            else
-            {
 
-                adapternumber = adapters.Length;//作为数组的长度
-                name = new string[adapternumber];
-               //如果配置文件存在 进行默认选择
-                comboBox1.SelectedIndex = 0;
-
-                //读取节点数
-
-
-            }
+            InternetSettingComboBox.SelectedIndex = 0;
+            LoadSelectedInternetSetting();
+            EditorUnable();
 
         }
         public void Fun()//将选择的项输出到IPAddressTextBox
         {
-            IPTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "IP地址", "", strFilePath);
-            SubnetMaskTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "subnet_mask", "", strFilePath).ToString();
-            DefaultGatewayTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "Defaultgateway", "", strFilePath).ToString();
-            PreferredDNSTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "PreferredDNS", "", strFilePath).ToString();
-            AlternateDNSTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "ReserveDNS", "", strFilePath).ToString();
+            IPTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "IP地址", "", strFilePath);
+            SubnetMaskTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "subnet_mask", "", strFilePath).ToString();
+            DefaultGatewayTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "Defaultgateway", "", strFilePath).ToString();
+            PreferredDNSTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "PreferredDNS", "", strFilePath).ToString();
+            AlternateDNSTextBox.Text = OperIni.ReadIni(name[AdapterComboBox.SelectedIndex], "ReserveDNS", "", strFilePath).ToString();
         }
         //dosCommand Dos命令语句
         public Task<string> Execute(string dosCommand)
@@ -155,20 +170,14 @@ namespace IPconfigHelper
            
            // return output;
         } 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)//执行配置
         {
-            if (comboBox1.SelectedIndex >= 0)
+            if (AdapterComboBox.SelectedIndex >= 0)
             {
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[0], IPTextBox.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[1], SubnetMaskTextBox.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[2], DefaultGatewayTextBox.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[3], PreferredDNSTextBox.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[4], AlternateDNSTextBox.Text, strFilePath);
-
 
                 //MessageBox.Show("IP信息写入完成");
-                Execute("netsh interface ip set address \"" + name[comboBox1.SelectedIndex] + "\" static" + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "IP地址", "", strFilePath).ToString() + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "subnet_mask", "", strFilePath).ToString() + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "Defaultgateway", "", strFilePath).ToString());
-                Execute("netsh interface ip set dns \"" + name[comboBox1.SelectedIndex] + "\" static" + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "PreferredDNS", "", strFilePath).ToString());
+                Execute("netsh interface ip set address \"" + name[AdapterComboBox.SelectedIndex] + "\" static" + " " + IPTextBox.Text + " " + SubnetMaskTextBox.Text + " " + DefaultGatewayTextBox.Text);
+                Execute("netsh interface ip set dns \"" + name[AdapterComboBox.SelectedIndex] + "\" static" + " " + PreferredDNSTextBox.Text);
 
                 OKButton.Enabled = false;
                 MessageBox.Show("IP地址以及DNS获取方式：用户指定");
@@ -183,10 +192,10 @@ namespace IPconfigHelper
 
         private void Button2_Click(object sender, EventArgs e)//ini文件操作成功
         {
-            if (comboBox1.SelectedIndex >= 0)
+            if (AdapterComboBox.SelectedIndex >= 0)
             {
-                Execute("netsh interface ip set address \"" + name[comboBox1.SelectedIndex] + "\" source=dhcp");
-            Execute("netsh interface ip set dns \"" + name[comboBox1.SelectedIndex] + "\" source=dhcp");
+                Execute("netsh interface ip set address \"" + name[AdapterComboBox.SelectedIndex] + "\" source=dhcp");
+            Execute("netsh interface ip set dns \"" + name[AdapterComboBox.SelectedIndex] + "\" source=dhcp");
             MessageBox.Show("IP地址以及DNS获取方式：DHCP");
 
             }
@@ -194,17 +203,13 @@ namespace IPconfigHelper
                 MessageBox.Show("先别乱点，选择一个网络连接先");
         }
      
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)//适配器列表
         {
             //读取所选择网络连接的配置信息
             //textBox1.Text= OperIni.ReadIni(name[comboBox1.SelectedIndex],"IP地址","",strFilePath).ToString();//读取
-            Fun();
+            //Fun();
            
         }
-
-     
-
-
 
         private void 配置信息重置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -231,17 +236,11 @@ namespace IPconfigHelper
     }
 
 
-        private void 开发者寄语ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("完成时间 2016年12月30日01:51:12 ；为了这个小东西我已经用尽洪荒之力，有BUG不要找我，我什么都不知道...什么都不知道~/(ㄒoㄒ)/~~");
-        }
-
-
         private void NewIpconfig_Click(object sender, EventArgs e)
         {
             addIpConfigPage = new AddIpConfigPage
             {
-                ConName = comboBox1.SelectedItem.ToString(),
+
 
             Visible = false
             };
@@ -259,36 +258,28 @@ namespace IPconfigHelper
             aboutForm.ShowDialog();
         }
 
-        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ConfigLockButton_Click(object sender, EventArgs e)
         {
-            if (IPTextBox.Enabled == true)
+           
+           configUpdateFlag= !configUpdateFlag;
+
+            if (configUpdateFlag)
             {
-                Controller.SaveInternetSetting(_modifiedConfiguration.configs);//保存配置
-          
-                
-                ConfigLockButton.BackgroundImage = Properties.Resources.locked56;
-                IPTextBox.Enabled = false;
-                SubnetMaskTextBox.Enabled = false;
-                DefaultGatewayTextBox.Enabled = false;
-                PreferredDNSTextBox.Enabled = false;
-                AlternateDNSTextBox.Enabled = false;
-               
+                ConfigLockButton.BackgroundImage = Properties.Resources.unlock37;
+                OKButton.Enabled = false;
+                DHCPButton.Enabled = false;
+                EditorEnable();
+
             }
             else
             {
-                ConfigLockButton.BackgroundImage = Properties.Resources.unlock37;
-                IPTextBox.Enabled = true;
-                SubnetMaskTextBox.Enabled = true;
-                DefaultGatewayTextBox.Enabled = true;
-                PreferredDNSTextBox.Enabled = true;
-                AlternateDNSTextBox.Enabled = true;
-            }
+                ConfigLockButton.BackgroundImage = Properties.Resources.locked56;//切换为锁定图标
+                SaveOldSelectedInternetSetting();
 
+                OKButton.Enabled = true;
+                DHCPButton.Enabled = true;
+                EditorUnable();
+            }
 
         }
 
@@ -323,9 +314,7 @@ namespace IPconfigHelper
             DefaultGatewayTextBox.Text = internetSetting.defaultGateway;
             PreferredDNSTextBox.Text = internetSetting.preferredDNSserver;
             AlternateDNSTextBox.Text = internetSetting.AlternateDNSserver;
-
-                
-                
+              
         }
 
         private void InternetSettingComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -335,6 +324,103 @@ namespace IPconfigHelper
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_MouseHover(object sender, EventArgs e)
+        {
+            NoteLableText( "删除配置");
+        }
+
+        private void DeleteButton_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
+            //以后考虑让其进行一些信息的滚动展示
+        }
+
+        private void ConfigLockButton_MouseHover(object sender, EventArgs e)
+        {
+            if (configUpdateFlag)
+                NoteLableText("保存更改");
+            else
+                NoteLableText("编辑配置");
+ 
+        }
+
+        private void ConfigLockButton_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
+        }
+
+        private void OKButton_MouseHover(object sender, EventArgs e)
+        {
+            NoteLableText( "执行选定配置（使用静态IP）");
+        }
+
+        private void OKButton_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
+        }
+
+        private void NoteLableText(string text)
+        {
+            NoteLabel.Text = text;
+        }
+
+        private void DHCPButton_MouseHover(object sender, EventArgs e)
+        {
+            NoteLableText("切换到DHCP模式（自动获取IP）");
+        }
+
+        private void DHCPButton_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
+        }
+
+        private void EditorEnable()
+        {
+            IPTextBox.Enabled = true;
+            SubnetMaskTextBox.Enabled = true;
+            DefaultGatewayTextBox.Enabled = true;
+            PreferredDNSTextBox.Enabled = true;
+            AlternateDNSTextBox.Enabled = true;
+        }
+
+        private void EditorUnable()
+        {
+            IPTextBox.Enabled = false;
+            SubnetMaskTextBox.Enabled = false;
+            DefaultGatewayTextBox.Enabled = false;
+            PreferredDNSTextBox.Enabled = false;
+            AlternateDNSTextBox.Enabled = false;
+        }
+
+        private void SaveOldSelectedInternetSetting()
+        {
+            InternetSetting internetSetting = new InternetSetting
+            {
+                ipAddress = IPTextBox.Text,
+                subnetMask = SubnetMaskTextBox.Text,
+                defaultGateway = DefaultGatewayTextBox.Text,
+                preferredDNSserver = PreferredDNSTextBox.Text,
+                AlternateDNSserver = AlternateDNSTextBox.Text
+            };
+            _modifiedConfiguration.configs[InternetSettingComboBox.SelectedIndex] = internetSetting;//将信息保存到 选择的那个
+            Controller.SaveInternetSetting(_modifiedConfiguration.configs);//保存配置
+        }
+
+        private void AdapterComboBox_MouseHover(object sender, EventArgs e)
+        {
+            NoteLableText("网络适配器列表");
+        }
+
+        private void AdapterComboBox_MouseLeave(object sender, EventArgs e)
+        {
+            NoteLableText("");
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

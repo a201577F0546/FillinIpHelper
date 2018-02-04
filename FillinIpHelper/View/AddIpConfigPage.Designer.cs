@@ -42,13 +42,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ipAddressTextBox1 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox2 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox3 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox4 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.IPTextBox = new FVD.Common.IPAddressTextBox();
+            this.SubnetMaskTextBox = new FVD.Common.IPAddressTextBox();
+            this.DefaultGatewayTextBox = new FVD.Common.IPAddressTextBox();
+            this.PreferredDNSTextBox = new FVD.Common.IPAddressTextBox();
+            this.AlternateDNSTextBox = new FVD.Common.IPAddressTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
@@ -95,11 +97,11 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.ipAddressTextBox1);
-            this.panel1.Controls.Add(this.ipAddressTextBox2);
-            this.panel1.Controls.Add(this.ipAddressTextBox3);
-            this.panel1.Controls.Add(this.ipAddressTextBox4);
-            this.panel1.Controls.Add(this.ipAddressTextBox5);
+            this.panel1.Controls.Add(this.IPTextBox);
+            this.panel1.Controls.Add(this.SubnetMaskTextBox);
+            this.panel1.Controls.Add(this.DefaultGatewayTextBox);
+            this.panel1.Controls.Add(this.PreferredDNSTextBox);
+            this.panel1.Controls.Add(this.AlternateDNSTextBox);
             this.panel1.Location = new System.Drawing.Point(12, 57);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 234);
@@ -195,51 +197,6 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "*";
             // 
-            // ipAddressTextBox1
-            // 
-            this.ipAddressTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox1.Location = new System.Drawing.Point(119, 3);
-            this.ipAddressTextBox1.Name = "ipAddressTextBox1";
-            this.ipAddressTextBox1.Size = new System.Drawing.Size(125, 28);
-            this.ipAddressTextBox1.TabIndex = 2;
-            this.ipAddressTextBox1.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox1.Value")));
-            // 
-            // ipAddressTextBox2
-            // 
-            this.ipAddressTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox2.Location = new System.Drawing.Point(119, 37);
-            this.ipAddressTextBox2.Name = "ipAddressTextBox2";
-            this.ipAddressTextBox2.Size = new System.Drawing.Size(125, 28);
-            this.ipAddressTextBox2.TabIndex = 3;
-            this.ipAddressTextBox2.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox2.Value")));
-            // 
-            // ipAddressTextBox3
-            // 
-            this.ipAddressTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox3.Location = new System.Drawing.Point(119, 71);
-            this.ipAddressTextBox3.Name = "ipAddressTextBox3";
-            this.ipAddressTextBox3.Size = new System.Drawing.Size(125, 28);
-            this.ipAddressTextBox3.TabIndex = 4;
-            this.ipAddressTextBox3.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox3.Value")));
-            // 
-            // ipAddressTextBox4
-            // 
-            this.ipAddressTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox4.Location = new System.Drawing.Point(119, 105);
-            this.ipAddressTextBox4.Name = "ipAddressTextBox4";
-            this.ipAddressTextBox4.Size = new System.Drawing.Size(125, 28);
-            this.ipAddressTextBox4.TabIndex = 5;
-            this.ipAddressTextBox4.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox4.Value")));
-            // 
-            // ipAddressTextBox5
-            // 
-            this.ipAddressTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox5.Location = new System.Drawing.Point(119, 139);
-            this.ipAddressTextBox5.Name = "ipAddressTextBox5";
-            this.ipAddressTextBox5.Size = new System.Drawing.Size(125, 28);
-            this.ipAddressTextBox5.TabIndex = 6;
-            this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -259,6 +216,61 @@
             this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 14;
             this.label3.Text = "lianjie";
+            // 
+            // IPTextBox
+            // 
+            this.IPTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.IPTextBox.Location = new System.Drawing.Point(119, 3);
+            this.IPTextBox.Name = "IPTextBox";
+            this.IPTextBox.Size = new System.Drawing.Size(125, 28);
+            this.IPTextBox.TabIndex = 2;
+            this.IPTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("IPTextBox.Value")));
+            // 
+            // SubnetMaskTextBox
+            // 
+            this.SubnetMaskTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SubnetMaskTextBox.Location = new System.Drawing.Point(119, 37);
+            this.SubnetMaskTextBox.Name = "SubnetMaskTextBox";
+            this.SubnetMaskTextBox.Size = new System.Drawing.Size(125, 28);
+            this.SubnetMaskTextBox.TabIndex = 3;
+            this.SubnetMaskTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("SubnetMaskTextBox.Value")));
+            // 
+            // DefaultGatewayTextBox
+            // 
+            this.DefaultGatewayTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DefaultGatewayTextBox.Location = new System.Drawing.Point(119, 71);
+            this.DefaultGatewayTextBox.Name = "DefaultGatewayTextBox";
+            this.DefaultGatewayTextBox.Size = new System.Drawing.Size(125, 28);
+            this.DefaultGatewayTextBox.TabIndex = 4;
+            this.DefaultGatewayTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("DefaultGatewayTextBox.Value")));
+            // 
+            // PreferredDNSTextBox
+            // 
+            this.PreferredDNSTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PreferredDNSTextBox.Location = new System.Drawing.Point(119, 105);
+            this.PreferredDNSTextBox.Name = "PreferredDNSTextBox";
+            this.PreferredDNSTextBox.Size = new System.Drawing.Size(125, 28);
+            this.PreferredDNSTextBox.TabIndex = 5;
+            this.PreferredDNSTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("PreferredDNSTextBox.Value")));
+            // 
+            // AlternateDNSTextBox
+            // 
+            this.AlternateDNSTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AlternateDNSTextBox.Location = new System.Drawing.Point(119, 139);
+            this.AlternateDNSTextBox.Name = "AlternateDNSTextBox";
+            this.AlternateDNSTextBox.Size = new System.Drawing.Size(125, 28);
+            this.AlternateDNSTextBox.TabIndex = 6;
+            this.AlternateDNSTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("AlternateDNSTextBox.Value")));
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(250, 191);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "*";
             // 
             // AddIpConfigPage
             // 
@@ -287,11 +299,11 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox1;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox2;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox3;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox4;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox5;
+        private FVD.Common.IPAddressTextBox IPTextBox;
+        private FVD.Common.IPAddressTextBox SubnetMaskTextBox;
+        private FVD.Common.IPAddressTextBox DefaultGatewayTextBox;
+        private FVD.Common.IPAddressTextBox PreferredDNSTextBox;
+        private FVD.Common.IPAddressTextBox AlternateDNSTextBox;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
@@ -305,5 +317,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

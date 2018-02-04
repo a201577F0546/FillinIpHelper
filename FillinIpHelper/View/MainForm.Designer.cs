@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OKButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.DHCPButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.iP配置信息重置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iP配置信息重置ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.AdapterComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.InternetSettingComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,6 +55,7 @@
             this.DefaultGatewayTextBox = new FVD.Common.IPAddressTextBox();
             this.SubnetMaskTextBox = new FVD.Common.IPAddressTextBox();
             this.IPTextBox = new FVD.Common.IPAddressTextBox();
+            this.NoteLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -73,20 +74,24 @@
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = false;
             this.OKButton.Click += new System.EventHandler(this.Button1_Click);
+            this.OKButton.MouseLeave += new System.EventHandler(this.OKButton_MouseLeave);
+            this.OKButton.MouseHover += new System.EventHandler(this.OKButton_MouseHover);
             // 
-            // button2
+            // DHCPButton
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(192, 344);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 46);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "自动";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.DHCPButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DHCPButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DHCPButton.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DHCPButton.Location = new System.Drawing.Point(192, 344);
+            this.DHCPButton.Margin = new System.Windows.Forms.Padding(2);
+            this.DHCPButton.Name = "DHCPButton";
+            this.DHCPButton.Size = new System.Drawing.Size(89, 46);
+            this.DHCPButton.TabIndex = 1;
+            this.DHCPButton.Text = "自动";
+            this.DHCPButton.UseVisualStyleBackColor = true;
+            this.DHCPButton.Click += new System.EventHandler(this.Button2_Click);
+            this.DHCPButton.MouseLeave += new System.EventHandler(this.DHCPButton_MouseLeave);
+            this.DHCPButton.MouseHover += new System.EventHandler(this.DHCPButton_MouseHover);
             // 
             // menuStrip1
             // 
@@ -204,19 +209,21 @@
             this.label6.Size = new System.Drawing.Size(0, 17);
             this.label6.TabIndex = 12;
             // 
-            // comboBox1
+            // AdapterComboBox
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(31, 61);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(93, 20);
-            this.comboBox1.TabIndex = 13;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.AdapterComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.AdapterComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AdapterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AdapterComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdapterComboBox.FormattingEnabled = true;
+            this.AdapterComboBox.Location = new System.Drawing.Point(31, 61);
+            this.AdapterComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.AdapterComboBox.Name = "AdapterComboBox";
+            this.AdapterComboBox.Size = new System.Drawing.Size(93, 20);
+            this.AdapterComboBox.TabIndex = 13;
+            this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.AdapterComboBox.MouseLeave += new System.EventHandler(this.AdapterComboBox_MouseLeave);
+            this.AdapterComboBox.MouseHover += new System.EventHandler(this.AdapterComboBox_MouseHover);
             // 
             // label7
             // 
@@ -272,6 +279,7 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "配置信息";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DeleteButton
             // 
@@ -279,7 +287,6 @@
             this.DeleteButton.BackgroundImage = global::IPconfigHelper.Properties.Resources.trash39;
             this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteButton.Enabled = false;
             this.DeleteButton.FlatAppearance.BorderSize = 0;
             this.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
@@ -290,6 +297,8 @@
             this.DeleteButton.TabIndex = 27;
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.DeleteButton.MouseLeave += new System.EventHandler(this.DeleteButton_MouseLeave);
+            this.DeleteButton.MouseHover += new System.EventHandler(this.DeleteButton_MouseHover);
             // 
             // ConfigLockButton
             // 
@@ -307,6 +316,8 @@
             this.ConfigLockButton.TabIndex = 26;
             this.ConfigLockButton.UseVisualStyleBackColor = false;
             this.ConfigLockButton.Click += new System.EventHandler(this.ConfigLockButton_Click);
+            this.ConfigLockButton.MouseLeave += new System.EventHandler(this.ConfigLockButton_MouseLeave);
+            this.ConfigLockButton.MouseHover += new System.EventHandler(this.ConfigLockButton_MouseHover);
             // 
             // PreferredDNSTextBox
             // 
@@ -353,18 +364,28 @@
             this.IPTextBox.TabIndex = 21;
             this.IPTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("IPTextBox.Value")));
             // 
+            // NoteLabel
+            // 
+            this.NoteLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.NoteLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.NoteLabel.Location = new System.Drawing.Point(12, 397);
+            this.NoteLabel.Name = "NoteLabel";
+            this.NoteLabel.Size = new System.Drawing.Size(290, 22);
+            this.NoteLabel.TabIndex = 29;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(314, 401);
+            this.ClientSize = new System.Drawing.Size(314, 426);
+            this.Controls.Add(this.NoteLabel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.InternetSettingComboBox);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.AdapterComboBox);
+            this.Controls.Add(this.DHCPButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -390,7 +411,7 @@
         #endregion
 
         private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DHCPButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem iP配置信息重置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iP配置信息重置ToolStripMenuItem1;
@@ -401,7 +422,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox AdapterComboBox;
         private System.Windows.Forms.Label label7;
         private FVD.Common.IPAddressTextBox IPTextBox;
         private FVD.Common.IPAddressTextBox SubnetMaskTextBox;
@@ -415,6 +436,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button ConfigLockButton;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Label NoteLabel;
     }
 }
 
