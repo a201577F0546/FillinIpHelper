@@ -72,8 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\IPconfigHelperController.cs" />
     <Compile Include="Model\Configuration.cs" />
-    <Compile Include="Model\Internet.cs" />
+    <Compile Include="Model\InternetSetting.cs" />
     <Compile Include="View\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,7 +168,10 @@
     <None Include="Resources\unlock37.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
+    <None Include="Resources\recycle46.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash39.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

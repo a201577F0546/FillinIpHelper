@@ -144,10 +144,10 @@
   <metadata name="ConfigLockButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ipAddressTextBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="PreferredDNSTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ipAddressTextBox4.Value" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="PreferredDNSTextBox.Value" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAUU3lzdGVtLk5ldC5JUEFkZHJl
@@ -157,10 +157,10 @@
         AAAAAAAAAAAAAAAPBAAAAAgAAAAOAAAAAAAAAAAAAAAAAAAAAAs=
 </value>
   </data>
-  <metadata name="ipAddressTextBox5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="AlternateDNSTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ipAddressTextBox5.Value" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="AlternateDNSTextBox.Value" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAUU3lzdGVtLk5ldC5JUEFkZHJl
@@ -170,10 +170,10 @@
         AAAAAAAAAAAAAAAPBAAAAAgAAAAOAAAAAAAAAAAAAAAAAAAAAAs=
 </value>
   </data>
-  <metadata name="ipAddressTextBox3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="DefaultGatewayTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ipAddressTextBox3.Value" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="DefaultGatewayTextBox.Value" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAUU3lzdGVtLk5ldC5JUEFkZHJl
@@ -183,10 +183,10 @@
         AAAAAAAAAAAAAAAPBAAAAAgAAAAOAAAAAAAAAAAAAAAAAAAAAAs=
 </value>
   </data>
-  <metadata name="ipAddressTextBox2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="SubnetMaskTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ipAddressTextBox2.Value" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="SubnetMaskTextBox.Value" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAUU3lzdGVtLk5ldC5JUEFkZHJl
@@ -196,10 +196,10 @@
         AAAAAAAAAAAAAAAPBAAAAAgAAAAOAAAAAAAAAAAAAAAAAAAAAAs=
 </value>
   </data>
-  <metadata name="ipAddressTextBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="IPTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ipAddressTextBox1.Value" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="IPTextBox.Value" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAElTeXN0ZW0sIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0
         cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAUU3lzdGVtLk5ldC5JUEFkZHJl

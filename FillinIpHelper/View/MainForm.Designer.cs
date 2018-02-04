@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.button1 = new System.Windows.Forms.Button();
+            this.OKButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.iP配置信息重置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,33 +45,34 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.InternetSettingComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.ConfigLockButton = new System.Windows.Forms.Button();
-            this.ipAddressTextBox4 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox5 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox3 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox2 = new FVD.Common.IPAddressTextBox();
-            this.ipAddressTextBox1 = new FVD.Common.IPAddressTextBox();
+            this.PreferredDNSTextBox = new FVD.Common.IPAddressTextBox();
+            this.AlternateDNSTextBox = new FVD.Common.IPAddressTextBox();
+            this.DefaultGatewayTextBox = new FVD.Common.IPAddressTextBox();
+            this.SubnetMaskTextBox = new FVD.Common.IPAddressTextBox();
+            this.IPTextBox = new FVD.Common.IPAddressTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // OKButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(29, 344);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "更改";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.OKButton.BackColor = System.Drawing.SystemColors.Control;
+            this.OKButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.OKButton.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.OKButton.Location = new System.Drawing.Point(29, 344);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(2);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(89, 46);
+            this.OKButton.TabIndex = 0;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = false;
+            this.OKButton.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -95,7 +96,7 @@
             this.iP配置信息重置ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(52, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(53, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,7 +106,7 @@
             this.iP配置信息重置ToolStripMenuItem1,
             this.关于ToolStripMenuItem});
             this.iP配置信息重置ToolStripMenuItem.Name = "iP配置信息重置ToolStripMenuItem";
-            this.iP配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.iP配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.iP配置信息重置ToolStripMenuItem.Text = "更多";
             // 
             // iP配置信息重置ToolStripMenuItem1
@@ -114,27 +115,27 @@
             this.NewIpconfig,
             this.配置信息重置ToolStripMenuItem});
             this.iP配置信息重置ToolStripMenuItem1.Name = "iP配置信息重置ToolStripMenuItem1";
-            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.iP配置信息重置ToolStripMenuItem1.Size = new System.Drawing.Size(110, 22);
             this.iP配置信息重置ToolStripMenuItem1.Text = "IP配置";
             // 
             // NewIpconfig
             // 
             this.NewIpconfig.Name = "NewIpconfig";
-            this.NewIpconfig.Size = new System.Drawing.Size(148, 22);
+            this.NewIpconfig.Size = new System.Drawing.Size(152, 22);
             this.NewIpconfig.Text = "新建";
             this.NewIpconfig.Click += new System.EventHandler(this.NewIpconfig_Click);
             // 
             // 配置信息重置ToolStripMenuItem
             // 
             this.配置信息重置ToolStripMenuItem.Name = "配置信息重置ToolStripMenuItem";
-            this.配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.配置信息重置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.配置信息重置ToolStripMenuItem.Text = "配置信息重置";
             this.配置信息重置ToolStripMenuItem.Click += new System.EventHandler(this.配置信息重置ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.AboutForm_Click);
             // 
@@ -227,17 +228,18 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "选择网络连接：";
             // 
-            // comboBox2
+            // InternetSettingComboBox
             // 
-            this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(143, 61);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 20);
-            this.comboBox2.TabIndex = 26;
+            this.InternetSettingComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.InternetSettingComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InternetSettingComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InternetSettingComboBox.FormattingEnabled = true;
+            this.InternetSettingComboBox.Location = new System.Drawing.Point(143, 61);
+            this.InternetSettingComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.InternetSettingComboBox.Name = "InternetSettingComboBox";
+            this.InternetSettingComboBox.Size = new System.Drawing.Size(138, 20);
+            this.InternetSettingComboBox.TabIndex = 26;
+            this.InternetSettingComboBox.SelectedIndexChanged += new System.EventHandler(this.InternetSettingComboBox_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -251,24 +253,43 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DeleteButton);
             this.groupBox1.Controls.Add(this.ConfigLockButton);
-            this.groupBox1.Controls.Add(this.ipAddressTextBox4);
+            this.groupBox1.Controls.Add(this.PreferredDNSTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.ipAddressTextBox5);
+            this.groupBox1.Controls.Add(this.AlternateDNSTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.ipAddressTextBox3);
+            this.groupBox1.Controls.Add(this.DefaultGatewayTextBox);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.ipAddressTextBox2);
+            this.groupBox1.Controls.Add(this.SubnetMaskTextBox);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.ipAddressTextBox1);
+            this.groupBox1.Controls.Add(this.IPTextBox);
             this.groupBox1.Location = new System.Drawing.Point(31, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(250, 236);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "配置信息";
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackColor = System.Drawing.SystemColors.Control;
+            this.DeleteButton.BackgroundImage = global::IPconfigHelper.Properties.Resources.trash39;
+            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteButton.Enabled = false;
+            this.DeleteButton.FlatAppearance.BorderSize = 0;
+            this.DeleteButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Location = new System.Drawing.Point(226, 15);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(15, 15);
+            this.DeleteButton.TabIndex = 27;
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // ConfigLockButton
             // 
@@ -280,57 +301,57 @@
             this.ConfigLockButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.ConfigLockButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.ConfigLockButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ConfigLockButton.Location = new System.Drawing.Point(220, 15);
+            this.ConfigLockButton.Location = new System.Drawing.Point(11, 15);
             this.ConfigLockButton.Name = "ConfigLockButton";
             this.ConfigLockButton.Size = new System.Drawing.Size(15, 15);
             this.ConfigLockButton.TabIndex = 26;
             this.ConfigLockButton.UseVisualStyleBackColor = false;
             this.ConfigLockButton.Click += new System.EventHandler(this.ConfigLockButton_Click);
             // 
-            // ipAddressTextBox4
+            // PreferredDNSTextBox
             // 
-            this.ipAddressTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox4.Location = new System.Drawing.Point(112, 159);
-            this.ipAddressTextBox4.Name = "ipAddressTextBox4";
-            this.ipAddressTextBox4.Size = new System.Drawing.Size(129, 23);
-            this.ipAddressTextBox4.TabIndex = 24;
-            this.ipAddressTextBox4.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox4.Value")));
+            this.PreferredDNSTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PreferredDNSTextBox.Location = new System.Drawing.Point(112, 159);
+            this.PreferredDNSTextBox.Name = "PreferredDNSTextBox";
+            this.PreferredDNSTextBox.Size = new System.Drawing.Size(129, 23);
+            this.PreferredDNSTextBox.TabIndex = 24;
+            this.PreferredDNSTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("PreferredDNSTextBox.Value")));
             // 
-            // ipAddressTextBox5
+            // AlternateDNSTextBox
             // 
-            this.ipAddressTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox5.Location = new System.Drawing.Point(112, 193);
-            this.ipAddressTextBox5.Name = "ipAddressTextBox5";
-            this.ipAddressTextBox5.Size = new System.Drawing.Size(129, 23);
-            this.ipAddressTextBox5.TabIndex = 25;
-            this.ipAddressTextBox5.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox5.Value")));
+            this.AlternateDNSTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AlternateDNSTextBox.Location = new System.Drawing.Point(112, 193);
+            this.AlternateDNSTextBox.Name = "AlternateDNSTextBox";
+            this.AlternateDNSTextBox.Size = new System.Drawing.Size(129, 23);
+            this.AlternateDNSTextBox.TabIndex = 25;
+            this.AlternateDNSTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("AlternateDNSTextBox.Value")));
             // 
-            // ipAddressTextBox3
+            // DefaultGatewayTextBox
             // 
-            this.ipAddressTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox3.Location = new System.Drawing.Point(112, 125);
-            this.ipAddressTextBox3.Name = "ipAddressTextBox3";
-            this.ipAddressTextBox3.Size = new System.Drawing.Size(129, 23);
-            this.ipAddressTextBox3.TabIndex = 23;
-            this.ipAddressTextBox3.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox3.Value")));
+            this.DefaultGatewayTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DefaultGatewayTextBox.Location = new System.Drawing.Point(112, 125);
+            this.DefaultGatewayTextBox.Name = "DefaultGatewayTextBox";
+            this.DefaultGatewayTextBox.Size = new System.Drawing.Size(129, 23);
+            this.DefaultGatewayTextBox.TabIndex = 23;
+            this.DefaultGatewayTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("DefaultGatewayTextBox.Value")));
             // 
-            // ipAddressTextBox2
+            // SubnetMaskTextBox
             // 
-            this.ipAddressTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox2.Location = new System.Drawing.Point(112, 90);
-            this.ipAddressTextBox2.Name = "ipAddressTextBox2";
-            this.ipAddressTextBox2.Size = new System.Drawing.Size(129, 23);
-            this.ipAddressTextBox2.TabIndex = 22;
-            this.ipAddressTextBox2.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox2.Value")));
+            this.SubnetMaskTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SubnetMaskTextBox.Location = new System.Drawing.Point(112, 90);
+            this.SubnetMaskTextBox.Name = "SubnetMaskTextBox";
+            this.SubnetMaskTextBox.Size = new System.Drawing.Size(129, 23);
+            this.SubnetMaskTextBox.TabIndex = 22;
+            this.SubnetMaskTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("SubnetMaskTextBox.Value")));
             // 
-            // ipAddressTextBox1
+            // IPTextBox
             // 
-            this.ipAddressTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ipAddressTextBox1.Location = new System.Drawing.Point(112, 51);
-            this.ipAddressTextBox1.Name = "ipAddressTextBox1";
-            this.ipAddressTextBox1.Size = new System.Drawing.Size(129, 33);
-            this.ipAddressTextBox1.TabIndex = 21;
-            this.ipAddressTextBox1.Value = ((System.Net.IPAddress)(resources.GetObject("ipAddressTextBox1.Value")));
+            this.IPTextBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.IPTextBox.Location = new System.Drawing.Point(112, 51);
+            this.IPTextBox.Name = "IPTextBox";
+            this.IPTextBox.Size = new System.Drawing.Size(129, 33);
+            this.IPTextBox.TabIndex = 21;
+            this.IPTextBox.Value = ((System.Net.IPAddress)(resources.GetObject("IPTextBox.Value")));
             // 
             // MainForm
             // 
@@ -340,11 +361,11 @@
             this.ClientSize = new System.Drawing.Size(314, 401);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.InternetSettingComboBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OKButton);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -368,7 +389,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem iP配置信息重置ToolStripMenuItem;
@@ -382,17 +403,18 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label7;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox1;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox2;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox3;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox4;
-        private FVD.Common.IPAddressTextBox ipAddressTextBox5;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private FVD.Common.IPAddressTextBox IPTextBox;
+        private FVD.Common.IPAddressTextBox SubnetMaskTextBox;
+        private FVD.Common.IPAddressTextBox DefaultGatewayTextBox;
+        private FVD.Common.IPAddressTextBox PreferredDNSTextBox;
+        private FVD.Common.IPAddressTextBox AlternateDNSTextBox;
+        private System.Windows.Forms.ComboBox InternetSettingComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripMenuItem NewIpconfig;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button ConfigLockButton;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
 

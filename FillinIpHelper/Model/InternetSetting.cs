@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace IPconfigHelper.Model
 {
-    public class Internet
+    public class InternetSetting
     {
         public string ipAddress;
-        public string 
-
+        public string subnetMask;
+        public string defaultGateway;
+        public string preferredDNSserver;
+        public string AlternateDNSserver;
 
     }
 }

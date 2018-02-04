@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
-using System.Configuration;
+
 using System.Runtime.InteropServices;//操作INI文件需要引入的命名空间
 using System.IO;//检查配置文件是否存在需要引入的名字空间
 using System.Threading;
+using IPconfigHelper.Controller;
+using IPconfigHelper.Model;
 namespace IPconfigHelper
 {
     public partial class MainForm : Form
     {
         AddIpConfigPage addIpConfigPage;
+        IPconfigHelperController Controller;
         private int adapternumber;
         // private string adaptername;
         private string strFilePath;
@@ -26,8 +29,8 @@ namespace IPconfigHelper
         string[] IPInformation = new string[5] { "IP地址", "subnet_mask", "Defaultgateway", "PreferredDNS", "ReserveDNS" };
         string[] IPnum = new string[5];
         NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces();//获取本地计算机上网络接口的对象
-
-
+        private Configuration _modifiedConfiguration;//暂存更改后的配置
+        private int _lastSelectedIndex = -1;
         public MainForm()
         {
             InitializeComponent();
@@ -38,6 +41,8 @@ namespace IPconfigHelper
                 name[i] = adapters[i].Name;//将适配器名字赋予name数组
             }
             comboBox1.DataSource = name;//将name绑定到comboBox1
+
+            Controller = new IPconfigHelperController();
         }
 
 
@@ -60,7 +65,7 @@ namespace IPconfigHelper
                     OperIni.WriteIni(name[i]+"&默认", IPInformation[j], "0.0.0.0", strFilePath);//初始化配置文件
                 }
 
-                comboBox2.Items.Add("默认");
+                InternetSettingComboBox.Items.Add("默认");
 
       
 
@@ -82,11 +87,11 @@ namespace IPconfigHelper
         }
         public void Fun()//将选择的项输出到IPAddressTextBox
         {
-            ipAddressTextBox1.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "IP地址", "", strFilePath);
-            ipAddressTextBox2.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "subnet_mask", "", strFilePath).ToString();
-            ipAddressTextBox3.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "Defaultgateway", "", strFilePath).ToString();
-            ipAddressTextBox4.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "PreferredDNS", "", strFilePath).ToString();
-            ipAddressTextBox5.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "ReserveDNS", "", strFilePath).ToString();
+            IPTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "IP地址", "", strFilePath);
+            SubnetMaskTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "subnet_mask", "", strFilePath).ToString();
+            DefaultGatewayTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "Defaultgateway", "", strFilePath).ToString();
+            PreferredDNSTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "PreferredDNS", "", strFilePath).ToString();
+            AlternateDNSTextBox.Text = OperIni.ReadIni(name[comboBox1.SelectedIndex], "ReserveDNS", "", strFilePath).ToString();
         }
         //dosCommand Dos命令语句
         public Task<string> Execute(string dosCommand)
@@ -154,23 +159,23 @@ namespace IPconfigHelper
         {
             if (comboBox1.SelectedIndex >= 0)
             {
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[0], ipAddressTextBox1.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[1], ipAddressTextBox2.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[2], ipAddressTextBox3.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[3], ipAddressTextBox4.Text, strFilePath);
-                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[4], ipAddressTextBox5.Text, strFilePath);
+                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[0], IPTextBox.Text, strFilePath);
+                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[1], SubnetMaskTextBox.Text, strFilePath);
+                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[2], DefaultGatewayTextBox.Text, strFilePath);
+                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[3], PreferredDNSTextBox.Text, strFilePath);
+                OperIni.WriteIni(name[comboBox1.SelectedIndex], IPInformation[4], AlternateDNSTextBox.Text, strFilePath);
 
 
                 //MessageBox.Show("IP信息写入完成");
                 Execute("netsh interface ip set address \"" + name[comboBox1.SelectedIndex] + "\" static" + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "IP地址", "", strFilePath).ToString() + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "subnet_mask", "", strFilePath).ToString() + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "Defaultgateway", "", strFilePath).ToString());
                 Execute("netsh interface ip set dns \"" + name[comboBox1.SelectedIndex] + "\" static" + " " + OperIni.ReadIni(name[comboBox1.SelectedIndex], "PreferredDNS", "", strFilePath).ToString());
 
-                button1.Enabled = false;
+                OKButton.Enabled = false;
                 MessageBox.Show("IP地址以及DNS获取方式：用户指定");
-                button1.Enabled = true;
+                OKButton.Enabled = true;
             }
             else
-                button1.Enabled = false;
+                OKButton.Enabled = false;
             
            
        
@@ -199,10 +204,7 @@ namespace IPconfigHelper
 
      
 
-        private void 版本说明ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Version 1.0");
-        }
+
 
         private void 配置信息重置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -228,24 +230,11 @@ namespace IPconfigHelper
         
     }
 
-        private void 使用说明ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("有点智商的应该都懂把···，tips:支持按空格跳转到下一个输入框哦，但是不能直接复制粘贴IP地址/(ㄒoㄒ)/~~");
-        }
-
-
 
         private void 开发者寄语ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("完成时间 2016年12月30日01:51:12 ；为了这个小东西我已经用尽洪荒之力，有BUG不要找我，我什么都不知道...什么都不知道~/(ㄒoㄒ)/~~");
         }
-
-        private void 添加新配置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
 
 
         private void NewIpconfig_Click(object sender, EventArgs e)
@@ -277,24 +266,27 @@ namespace IPconfigHelper
 
         private void ConfigLockButton_Click(object sender, EventArgs e)
         {
-            if (ipAddressTextBox1.Enabled == true)
+            if (IPTextBox.Enabled == true)
             {
+                Controller.SaveInternetSetting(_modifiedConfiguration.configs);//保存配置
+          
+                
                 ConfigLockButton.BackgroundImage = Properties.Resources.locked56;
-                ipAddressTextBox1.Enabled = false;
-                ipAddressTextBox2.Enabled = false;
-                ipAddressTextBox3.Enabled = false;
-                ipAddressTextBox4.Enabled = false;
-                ipAddressTextBox5.Enabled = false;
+                IPTextBox.Enabled = false;
+                SubnetMaskTextBox.Enabled = false;
+                DefaultGatewayTextBox.Enabled = false;
+                PreferredDNSTextBox.Enabled = false;
+                AlternateDNSTextBox.Enabled = false;
                
             }
             else
             {
                 ConfigLockButton.BackgroundImage = Properties.Resources.unlock37;
-                ipAddressTextBox1.Enabled = true;
-                ipAddressTextBox2.Enabled = true;
-                ipAddressTextBox3.Enabled = true;
-                ipAddressTextBox4.Enabled = true;
-                ipAddressTextBox5.Enabled = true;
+                IPTextBox.Enabled = true;
+                SubnetMaskTextBox.Enabled = true;
+                DefaultGatewayTextBox.Enabled = true;
+                PreferredDNSTextBox.Enabled = true;
+                AlternateDNSTextBox.Enabled = true;
             }
 
 
@@ -313,6 +305,37 @@ namespace IPconfigHelper
             {
                 file.Delete();
             }
+
+        }
+
+
+        private void LoadCurrentConfiguration()
+        {
+            _modifiedConfiguration = Controller.GetConfigurationCopy();
+        }
+
+        private void LoadSelectedInternetSetting()
+        {
+            InternetSetting internetSetting = _modifiedConfiguration.configs[InternetSettingComboBox.SelectedIndex];
+
+            IPTextBox.Text = internetSetting.ipAddress;
+            SubnetMaskTextBox.Text = internetSetting.subnetMask;
+            DefaultGatewayTextBox.Text = internetSetting.defaultGateway;
+            PreferredDNSTextBox.Text = internetSetting.preferredDNSserver;
+            AlternateDNSTextBox.Text = internetSetting.AlternateDNSserver;
+
+                
+                
+        }
+
+        private void InternetSettingComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSelectedInternetSetting();
+            _lastSelectedIndex = InternetSettingComboBox.SelectedIndex;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
 
         }
     }
