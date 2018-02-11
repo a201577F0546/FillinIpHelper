@@ -9,7 +9,7 @@
 ## v2.0 更新内容
 1. 更新了UI设计
 
-![UI界面图片](\FillinIpHelper\Screenshots\UI.png)
+![UI界面图片](/FillinIpHelper/Screenshots/UI.png)
 
 
 2. 新增存储多套IP配置信息的功能  
